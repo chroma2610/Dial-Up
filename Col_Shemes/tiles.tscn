@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://bln1l3vow47w1"]
+
+[ext_resource type="PackedScene" uid="uid://dmoh4ysy2qb0f" path="res://assets/window.glb" id="1_6gypg"]
+[ext_resource type="PackedScene" uid="uid://duevrccnunlsl" path="res://assets/wall.glb" id="2_8f8m8"]
+[ext_resource type="PackedScene" uid="uid://dcqhwkq2x2wlg" path="res://assets/door.glb" id="3_rj4ag"]
+
+[node name="Tiles" type="Node3D" unique_id=832735144]
+
+[node name="window" parent="." unique_id=46515358 instance=ExtResource("1_6gypg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+
+[node name="wall" parent="." unique_id=661441358 instance=ExtResource("2_8f8m8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
+
+[node name="door" parent="." unique_id=984149713 instance=ExtResource("3_rj4ag")]

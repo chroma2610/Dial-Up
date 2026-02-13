@@ -1,20 +1,68 @@
 [gd_scene format=3 uid="uid://cl208j4ypdrmc"]
 
 [ext_resource type="Script" uid="uid://csed2wgqjm5r2" path="res://player.gd" id="1_4flbx"]
+[ext_resource type="Texture2D" uid="uid://dfquxoufkfg83" path="res://player/wipdialup-Sheet.png" id="2_onrkg"]
 
-[sub_resource type="QuadMesh" id="QuadMesh_4flbx"]
-size = Vector2(0.9, 1.75)
+[sub_resource type="AtlasTexture" id="AtlasTexture_i3pqv"]
+atlas = ExtResource("2_onrkg")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hqtel"]
+atlas = ExtResource("2_onrkg")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_onrkg"]
+atlas = ExtResource("2_onrkg")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sweqy"]
+atlas = ExtResource("2_onrkg")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i3pqv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i3pqv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hqtel")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_onrkg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sweqy")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 4.0
+}]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_onrkg"]
-radius = 0.45
-height = 1.75
+radius = 0.8
 
 [node name="player" type="CharacterBody3D" unique_id=1321092498]
+axis_lock_linear_y = true
 script = ExtResource("1_4flbx")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=210853905]
-mesh = SubResource("QuadMesh_4flbx")
+[node name="sprite" type="AnimatedSprite3D" parent="." unique_id=2119533160]
+transform = Transform3D(3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, 0, -0.9, 0)
+offset = Vector2(0, 32.5)
+modulate = Color(0.67, 0.57709336, 0.49580002, 1)
+billboard = 2
+alpha_cut = 2
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_i3pqv")
+animation = &"walk"
+autoplay = "idle"
+frame_progress = 0.14391156
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=912093100]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.005493164, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.123413086, 0)
 shape = SubResource("CapsuleShape3D_onrkg")
