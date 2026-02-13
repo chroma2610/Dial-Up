@@ -47,8 +47,8 @@ animations = [{
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_onrkg"]
 radius = 0.8
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_onrkg"]
-radius = 1.2
+[sub_resource type="BoxShape3D" id="BoxShape3D_onrkg"]
+size = Vector3(1.18, 1, 3.05)
 
 [node name="player" type="CharacterBody3D" unique_id=1321092498]
 axis_lock_linear_y = true
@@ -64,14 +64,14 @@ texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_i3pqv")
 animation = &"walk"
 autoplay = "idle"
-frame_progress = 0.17334042
+frame_progress = 0.4051265
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=912093100]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.123413086, 0)
 shape = SubResource("CapsuleShape3D_onrkg")
 
 [node name="InteractionCast" type="ShapeCast3D" parent="." unique_id=393661852]
-shape = SubResource("SphereShape3D_onrkg")
+shape = SubResource("BoxShape3D_onrkg")
 target_position = Vector3(1, 0, 0)
 collide_with_areas = true
 collide_with_bodies = false
