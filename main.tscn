@@ -30,7 +30,7 @@ use_collision = true
 size = Vector3(18.027344, 0.19335938, 23.7854)
 
 [node name="player" parent="." unique_id=1321092498 instance=ExtResource("1_ig7tw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7455275, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.797303, 0.7455275, 0)
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=517250404]
 transform = Transform3D(1, 0, 0, 0, 0.811788, 0.5839522, 0, -0.5839522, 0.811788, 0, 5.347912, 8.223124)
