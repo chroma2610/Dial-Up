@@ -14,44 +14,6 @@ size = Vector3(4.1175756, 0.81726074, 1.2000732)
 [sub_resource type="BoxShape3D" id="BoxShape3D_n541g"]
 size = Vector3(1.1916003, 0.81726074, 1.9940033)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4umpn"]
-resource_name = "Material.067"
-cull_mode = 2
-albedo_color = Color(0, 0, 0, 1)
-roughness = 0.5
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_pxxrp"]
-_surfaces = [{
-"aabb": AABB(-0.6203139, -0.07350953, -0.07350953, 0.6938234, 0.10875408, 0.14701906),
-"format": 34896613377,
-"index_count": 36,
-"index_data": PackedByteArray("AAABAAIAAAADAAEABAACAAEAAwAEAAEABQAAAAIAAwAAAAUABAAGAAIABQACAAYAAwAHAAQAAwAFAAcABwAGAAQABwAFAAYA"),
-"name": "Material.067",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 8,
-"vertex_data": PackedByteArray("AAAAAP//AAAAAP//kDoAAAAA//9uxQAAAAAAAAAAAAD/////kDoAAP//AAD//wAA/////27FAAD//wAAAAAAAA==")
-}]
-blend_shape_mode = 0
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_hoole"]
-resource_name = "tablesandplants_Cube_005"
-_surfaces = [{
-"aabb": AABB(-0.6203139, -0.07350953, -0.07350953, 0.6938234, 0.10875408, 0.14701906),
-"attribute_data": PackedByteArray("/1////+f/7//n////1//v/9f/7//n/9//5//v/9f/3//X/9//5//P/+f/3//X/8//1//P/+fAAD/n/8//18AAP8f/3//X/8//1//f/8f/z//n/9//9//P//f/3//n/8/"),
-"format": 34896613399,
-"index_count": 36,
-"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
-"material": SubResource("StandardMaterial3D_4umpn"),
-"name": "Material.067",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 24,
-"vertex_data": PackedByteArray("AAAAAP//3tMAAP//kDoE1AAA//9uxbTcAAAAAAAAqs4AAAAAAABe9/////+QOl73AAD//5A6Xvf//wAAAABe9///AAAAAN7T/////27FBNT/////kDq03P//AAD//6rO//8AAP//6MAAAP//bsXowP////9uxejAAAAAAP//6MAAAAAAAAD/v///AAD///+///8AAAAA/78AAAAA////v/////+QOv//AAD//27F//8AAP//kDr///////9uxf//htM71rXTI9aD3TzRR8zb2YC7gLuAu4C7gLuAu4C7gLt4LMMpSSzbKXsiwi63MyMmJPHaDiTx2g4k8doOJPHaDgAA/38AAP9/AAD/fwAA/3//f/+//3//v/9//7//f/+/")
-}]
-blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_pxxrp")
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_waobq"]
 resource_name = "Material.067"
 cull_mode = 2
@@ -87,6 +49,8 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_iw13d")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rji33"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_js5ax"]
 resource_name = "Material.044"
@@ -2851,13 +2815,17 @@ shape = SubResource("BoxShape3D_rpt8v")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.825472, 0.40472412, 6.1963577)
 shape = SubResource("BoxShape3D_rpt8v")
 
-[node name="Cube_016" type="MeshInstance3D" parent="." unique_id=1380432039]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.7496567, 0.8865238, -7.004952)
-mesh = SubResource("ArrayMesh_hoole")
-
 [node name="Cube_017" type="MeshInstance3D" parent="." unique_id=1863476339]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4320736, 1.0750195, -7.2798057)
 mesh = SubResource("ArrayMesh_rji33")
+surface_material_override/0 = SubResource("StandardMaterial3D_rji33")
+
+[node name="Label3D" type="Label3D" parent="Cube_017" unique_id=457719580]
+transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, 0, -0.099615455, 0)
+modulate = Color(1, 0, 0, 1)
+outline_modulate = Color(1, 1, 1, 1)
+text = "BILLS"
+outline_size = 0
 
 [node name="Cylinder_004" type="MeshInstance3D" parent="." unique_id=2022141556]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.71780396, 0.90716124, -0.7380972)

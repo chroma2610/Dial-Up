@@ -2,6 +2,7 @@ extends CharacterBody3D
 
 @onready var sprite: AnimatedSprite3D = $sprite
 @onready var interaction_cast: ShapeCast3D = $InteractionCast
+@onready var camera: Camera3D = $Camera3D
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
@@ -13,7 +14,10 @@ func _unhandled_key_input(event: InputEvent) -> void:
             print(interaction_cast.get_collider(0))
 
 func _physics_process(delta: float) -> void:
-    
+    if position.z < -6:
+        camera.target_view = camera.manager_view
+    else:
+        camera.target_view = camera.cafe_view
     # Get the input direction and handle the movement/deceleration.
     # As good practice, you should replace UI actions with custom gameplay actions.
     var input_dir := Input.get_vector("left", "right", "up", "down")

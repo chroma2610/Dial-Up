@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://csed2wgqjm5r2" path="res://player/player.gd" id="1_4flbx"]
 [ext_resource type="Texture2D" uid="uid://dfquxoufkfg83" path="res://player/wipdialup-Sheet.png" id="2_onrkg"]
+[ext_resource type="Script" uid="uid://cnhjd5fgb7jm" path="res://camera_3d.gd" id="3_g1dw6"]
+[ext_resource type="FontFile" uid="uid://v130t0q7i60u" path="res://04B_03_.TTF" id="4_yw30f"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i3pqv"]
 atlas = ExtResource("2_onrkg")
@@ -75,3 +77,19 @@ shape = SubResource("SphereShape3D_onrkg")
 target_position = Vector3(1, 0, 0)
 collide_with_areas = true
 collide_with_bodies = false
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1869774355]
+transform = Transform3D(1, 0, 0, 0, 0.7200062, 0.69396764, 0, -0.69396764, 0.7200062, 0, 11.184356, 13.452828)
+top_level = true
+fov = 60.0
+script = ExtResource("3_g1dw6")
+manager_view = Vector4(0, 10.412, 9.591, -37.6)
+
+[node name="Label3D" type="Label3D" parent="." unique_id=2073984303]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 1.7067957, 0)
+billboard = 1
+no_depth_test = true
+fixed_size = true
+text = "did you try turning it off and back on again"
+font = ExtResource("4_yw30f")
+autowrap_mode = 2
