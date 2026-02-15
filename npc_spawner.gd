@@ -5,14 +5,27 @@ extends Node3D
 
 @onready var computers: Node3D = $"../computers"
 
+var spawn_timer := 0.0
+var spawn_interval
+
 func _ready() -> void:
-        spawn()
+    randomize()
+    spawn_interval = randf_range(0, 20)
+    spawn()
 
 func _process(delta: float) -> void:
-    if len(get_children()) < 12:
-        running = true
+    if Global.checking_in == true or len(get_children()) > 11:
+        spawn_timer = 0
+        pass
+    elif spawn_timer > spawn_interval:
+        spawn()
+        spawn_timer = 0
+        randomize()
+        spawn_interval = randf_range(0, 20)
     else:
-        running = false
+        spawn_timer += delta
+
+
 
 func spawn():
     var inst := scene.instantiate()
@@ -24,7 +37,7 @@ var running = false
 func spawn_continuously(delay: float):
     running = true
     while running == true:
-        
+        await get_tree().create_timer(delay).timeout
         spawn()
             
-        await get_tree().create_timer(delay).timeout
+        

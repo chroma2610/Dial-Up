@@ -269,4 +269,6 @@ script = ExtResource("10_4c57u")
 [node name="NPCSpawner" parent="." unique_id=692574738 instance=ExtResource("12_ycdy4")]
 scene = ExtResource("7_5vw27")
 
+[node name="NPC" parent="." unique_id=756004745 instance=ExtResource("7_5vw27")]
+
 [connection signal="pressed" from="computers/ManagerComputer/ManagerScreenOverlay/CenterContainer/SubViewportContainer/SubViewport/ManagerScreen/Button2" to="computers/ManagerComputer/ManagerScreenOverlay" method="_on_button_pressed"]

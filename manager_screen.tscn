@@ -148,3 +148,11 @@ theme_override_font_sizes/normal_font_size = 8
 bbcode_enabled = true
 scroll_active = false
 script = ExtResource("6_i6yc8")
+
+[node name="close" type="Button" parent="Inbox" unique_id=2122672642]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 243.0
+offset_top = 1.0
+offset_right = 256.0
+offset_bottom = 14.0

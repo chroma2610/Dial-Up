@@ -1,9 +1,34 @@
 [gd_scene format=3 uid="uid://t15nwyfmpfja"]
 
 [ext_resource type="Script" uid="uid://q45uycndain1" path="res://npc/npc.gd" id="1_ul7y6"]
+[ext_resource type="Texture2D" uid="uid://fxmdk7ovcsnx" path="res://npc/angrynpcwalk-Sheet-export.png" id="2_bc6q4"]
 [ext_resource type="Texture2D" uid="uid://bdxw18cpa7kvl" path="res://npc/defaultnpcwalk-Sheet.png" id="2_ul7y6"]
 [ext_resource type="FontFile" uid="uid://v130t0q7i60u" path="res://04B_03_.TTF" id="3_mcvl2"]
 [ext_resource type="Texture2D" uid="uid://dbqyak24wiv3f" path="res://warning.png" id="4_d61ma"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_215dd"]
+atlas = ExtResource("2_bc6q4")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p5bpe"]
+atlas = ExtResource("2_bc6q4")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_upjdb"]
+atlas = ExtResource("2_bc6q4")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u41a8"]
+atlas = ExtResource("2_bc6q4")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cgete"]
+atlas = ExtResource("2_bc6q4")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gu3sj"]
+atlas = ExtResource("2_bc6q4")
+region = Rect2(192, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ul7y6"]
 atlas = ExtResource("2_ul7y6")
@@ -31,6 +56,34 @@ region = Rect2(192, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kek77"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_215dd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p5bpe")
+}],
+"loop": true,
+"name": &"angryidle",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_upjdb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u41a8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cgete")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gu3sj")
+}],
+"loop": true,
+"name": &"angrywalk",
+"speed": 7.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ul7y6")
@@ -126,6 +179,22 @@ tracks/0/keys = {
 "values": [Vector3(-3.5884495, 1, -6.1971617), Vector3(3.732, 1, -6.197), Vector3(3.7320004, 1, 6.1050005)]
 }
 
+[sub_resource type="Animation" id="Animation_bc6q4"]
+resource_name = "1leave"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.5666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-3.606, 1, 6), Vector3(-4.10732, 1.0000005, 11.454841), Vector3(-18.002, 1, 11.455)]
+}
+
 [sub_resource type="Animation" id="Animation_5vw27"]
 resource_name = "2"
 length = 1.75
@@ -140,6 +209,22 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(-3.5884495, 1, -6.1971617), Vector3(-3.606, 1, 2)]
+}
+
+[sub_resource type="Animation" id="Animation_mcvl2"]
+resource_name = "2leave"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666668, 1, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-3.606, 1, 2), Vector3(-2.8, 1, 2), Vector3(-4.10732, 1.0000005, 11.454841), Vector3(-18.002, 1, 11.455)]
 }
 
 [sub_resource type="Animation" id="Animation_kek77"]
@@ -157,6 +242,22 @@ tracks/0/keys = {
 "values": [Vector3(-3.5884495, 1, -6.1971617), Vector3(-3.606, 1, -2)]
 }
 
+[sub_resource type="Animation" id="Animation_d61ma"]
+resource_name = "3leave"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.33333334, 1.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-3.606, 1, -2), Vector3(-2.8, 1, -2), Vector3(-4.10732, 1.0000005, 11.454841), Vector3(-18.002, 1, 11.455)]
+}
+
 [sub_resource type="Animation" id="Animation_ycdy4"]
 resource_name = "4"
 tracks/0/type = "value"
@@ -170,6 +271,22 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(-3.5884495, 1, -6.1971617), Vector3(-1.696, 1, -2)]
+}
+
+[sub_resource type="Animation" id="Animation_slxoh"]
+resource_name = "4leave"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.33333334, 1.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-1.696, 1, -2), Vector3(-2.8, 1, -1.144), Vector3(-4.10732, 1.0000005, 11.454841), Vector3(-18.002, 1, 11.455)]
 }
 
 [sub_resource type="Animation" id="Animation_w48qg"]
@@ -188,8 +305,40 @@ tracks/0/keys = {
 "values": [Vector3(-3.5884495, 1, -6.1971617), Vector3(-1.696, 1, 2)]
 }
 
+[sub_resource type="Animation" id="Animation_l64hl"]
+resource_name = "5leave"
+length = 2.75
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.30000007, 1.2, 2.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-1.696, 1, 2), Vector3(-2.8, 1, 2), Vector3(-4.10732, 1.0000005, 11.454841), Vector3(-18.002, 1, 11.455)]
+}
+
 [sub_resource type="Animation" id="Animation_4c57u"]
 resource_name = "4"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-3.5884495, 1, -6.1971617), Vector3(-1.696, 1, 6)]
+}
+
+[sub_resource type="Animation" id="Animation_215dd"]
+resource_name = "6leave"
 length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -289,11 +438,17 @@ _data = {
 &"10": SubResource("Animation_074og"),
 &"11": SubResource("Animation_cegan"),
 &"12": SubResource("Animation_82xsv"),
+&"1leave": SubResource("Animation_bc6q4"),
 &"2": SubResource("Animation_5vw27"),
+&"2leave": SubResource("Animation_mcvl2"),
 &"3": SubResource("Animation_kek77"),
+&"3leave": SubResource("Animation_d61ma"),
 &"4": SubResource("Animation_ycdy4"),
+&"4leave": SubResource("Animation_slxoh"),
 &"5": SubResource("Animation_w48qg"),
+&"5leave": SubResource("Animation_l64hl"),
 &"6": SubResource("Animation_4c57u"),
+&"6leave": SubResource("Animation_215dd"),
 &"7": SubResource("Animation_vivmo"),
 &"8": SubResource("Animation_getpj"),
 &"9": SubResource("Animation_ryguw"),
@@ -394,8 +549,8 @@ billboard = 2
 alpha_cut = 2
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_kek77")
-animation = &"idle"
-frame_progress = 0.774314
+animation = &"angrywalk"
+frame_progress = 0.4855691
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1320725289]
 shape = SubResource("CapsuleShape3D_4c57u")
@@ -417,7 +572,7 @@ text = "$50"
 font = ExtResource("3_mcvl2")
 
 [node name="ProblemTimer" type="Timer" parent="." unique_id=2124491066]
-wait_time = 10.0
+wait_time = 3.0
 
 [node name="warning" type="Sprite3D" parent="." unique_id=393913893]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 1.8985028, 0)

@@ -80,6 +80,6 @@ func _process(delta: float) -> void:
         set_stats({
         "Total Income": Global.bank_balance,
         "Total Customers": str(Global.total_customers) + "/12",
-        "Establishment Rating": 12,
-        "Wifi Connection": 6.5
+        "Establishment Rating": "★★★★☆",
+        "Wifi Connection": "Good"
         })

@@ -9,9 +9,12 @@ extends AnimatableBody3D
 @onready var computers = get_parent().computers.get_children()
 @onready var sprite: AnimatedSprite3D = $sprite
 
+var annoyed_meter := 0.0
+var impatience := 5
+
 var interaction_priority = 0
 
-enum states {MOVING, COMPUTER, ISSUE, SOLVING}
+enum states {MOVING, COMPUTER, ISSUE, LEAVING}
 var state := states.MOVING
 
 var assigned_computer : int
@@ -19,6 +22,7 @@ var at_computer : bool
 
 var previous_position : Vector3
 func _ready() -> void:
+    Global.checking_in = true
     sprite.play("walk")
     previous_position = global_position
     interaction_priority = 0
@@ -35,6 +39,7 @@ func _ready() -> void:
     
 var money_timer := 0.0
 func _process(delta: float) -> void:
+    print(annoyed_meter)
     var difference = global_position - previous_position
 
     if difference.x > 0:
@@ -42,11 +47,12 @@ func _process(delta: float) -> void:
     elif difference.x < 0:
         sprite.flip_h = false    # moving left
     
-    
 
     previous_position = global_position
     if state == states.COMPUTER:
         active_working(delta)
+    elif state == states.ISSUE:
+        annoyed_meter += impatience * delta
         
         
 
@@ -81,15 +87,19 @@ func add_money(money):
 
 func _on_problem_timer_timeout() -> void:
     if state == states.COMPUTER:
+        if annoyed_meter > 100:
+            state = states.LEAVING
         randomize()
-        if randi_range(0, 1) == 1:
-            interaction_priority = 999
-            warning.show()
-            event_timer.stop()
-            state = states.ISSUE
+        if Global.customers_with_issues < 3:
+            if randi_range(0, 3) == 1:
+                interaction_priority = 999
+                warning.show()
+                event_timer.stop()
+                state = states.ISSUE
+                Global.customers_with_issues += 1
 
 func problem_fixed():
-    print(event_timer.time_left)
+    Global.customers_with_issues -= 1
     warning.hide()
     event_timer.start()
     state = states.COMPUTER
@@ -101,6 +111,7 @@ func _on_text_animator_animation_finished(anim_name: StringName) -> void:
 func player_interaction(player):
     player.state = states.MOVING
     if at_computer == false:
+        Global.checking_in = false
         Global.total_customers += 1
         movement_animator.play(str(assigned_computer))
         sprite.play("walk")

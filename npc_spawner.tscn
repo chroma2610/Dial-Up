@@ -1,8 +1,6 @@
 [gd_scene format=3 uid="uid://cp8das1ubnvcv"]
 
 [ext_resource type="Script" uid="uid://cs8npglwcn0j8" path="res://npc_spawner.gd" id="1_poeg3"]
-[ext_resource type="PackedScene" uid="uid://t15nwyfmpfja" path="res://npc.tscn" id="2_odjid"]
 
 [node name="NPCSpawner" type="Node3D" unique_id=692574738]
 script = ExtResource("1_poeg3")
-scenes = ExtResource("2_odjid")
