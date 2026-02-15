@@ -1,18 +1,62 @@
 [gd_scene format=3 uid="uid://t15nwyfmpfja"]
 
 [ext_resource type="Script" uid="uid://q45uycndain1" path="res://npc/npc.gd" id="1_ul7y6"]
-[ext_resource type="Texture2D" uid="uid://bf7muxajgnh6d" path="res://icon.svg" id="2_bc6q4"]
+[ext_resource type="Texture2D" uid="uid://bdxw18cpa7kvl" path="res://npc/defaultnpcwalk-Sheet.png" id="2_ul7y6"]
 [ext_resource type="FontFile" uid="uid://v130t0q7i60u" path="res://04B_03_.TTF" id="3_mcvl2"]
 [ext_resource type="Texture2D" uid="uid://dbqyak24wiv3f" path="res://warning.png" id="4_d61ma"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ul7y6"]
+atlas = ExtResource("2_ul7y6")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l64hl"]
+atlas = ExtResource("2_ul7y6")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bc6q4"]
+atlas = ExtResource("2_ul7y6")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mcvl2"]
+atlas = ExtResource("2_ul7y6")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d61ma"]
+atlas = ExtResource("2_ul7y6")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_slxoh"]
+atlas = ExtResource("2_ul7y6")
+region = Rect2(192, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kek77"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_bc6q4")
+"texture": SubResource("AtlasTexture_ul7y6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l64hl")
 }],
 "loop": true,
-"name": &"default",
+"name": &"idle",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bc6q4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mcvl2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d61ma")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_slxoh")
+}],
+"loop": true,
+"name": &"walk",
 "speed": 5.0
 }]
 
@@ -36,7 +80,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_074og"]
 resource_name = "10"
-length = 2.0
+length = 1.4333333
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -178,7 +222,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_getpj"]
 resource_name = "8"
-length = 2.0
+length = 1.7333333
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -194,7 +238,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_ryguw"]
 resource_name = "9"
-length = 2.0
+length = 1.3666667
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -262,7 +306,7 @@ length = 0.001
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../../Label:modulate:a")
+tracks/0/path = NodePath("Label:modulate:a")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -273,7 +317,7 @@ tracks/0/keys = {
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../../Label:position:y")
+tracks/1/path = NodePath("Label:position:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -284,7 +328,7 @@ tracks/1/keys = {
 tracks/2/type = "bezier"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../../Label:outline_modulate:a")
+tracks/2/path = NodePath("Label:outline_modulate:a")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -299,7 +343,7 @@ length = 2.0
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../../Label:modulate:a")
+tracks/0/path = NodePath("Label:modulate:a")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -310,7 +354,7 @@ tracks/0/keys = {
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../../Label:position:y")
+tracks/1/path = NodePath("Label:position:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -321,13 +365,13 @@ tracks/1/keys = {
 tracks/2/type = "bezier"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../../Label:outline_modulate:a")
+tracks/2/path = NodePath("Label:outline_modulate:a")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"handle_modes": PackedInt32Array(0, 2, 2),
+"handle_modes": PackedInt32Array(0, 0, 0),
 "points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.05555556, 0.16666669, 0, 0, 0, -0.061111107, 0, 0, 0),
-"times": PackedFloat32Array(0, 0.33333334, 0.7)
+"times": PackedFloat32Array(0.033333335, 0.36666667, 0.73333335)
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_074og"]
@@ -336,9 +380,6 @@ _data = {
 &"subtle rise": SubResource("Animation_yaehf")
 }
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_4c57u"]
-viewport_path = NodePath("NPC/Sprite3D/SubViewport")
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_ul7y6"]
 size = Vector3(3, 3.559, 3)
 
@@ -346,11 +387,15 @@ size = Vector3(3, 3.559, 3)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.832951, 1, 10.689069)
 script = ExtResource("1_ul7y6")
 
-[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=866452404]
-transform = Transform3D(0.78, 0, 0, 0, 1.55, 0, 0, 0, 1, 0, 0, 0)
+[node name="sprite" type="AnimatedSprite3D" parent="." unique_id=866452404]
+transform = Transform3D(3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, 0, 0, 0)
+offset = Vector2(0, 3.81)
 billboard = 2
 alpha_cut = 2
+texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_kek77")
+animation = &"idle"
+frame_progress = 0.774314
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1320725289]
 shape = SubResource("CapsuleShape3D_4c57u")
@@ -359,7 +404,6 @@ shape = SubResource("CapsuleShape3D_4c57u")
 libraries/ = SubResource("AnimationLibrary_ycdy4")
 
 [node name="TextAnimator" type="AnimationPlayer" parent="." unique_id=610308086]
-root_node = NodePath("../Sprite3D/SubViewport")
 libraries/ = SubResource("AnimationLibrary_074og")
 
 [node name="Label" type="Label3D" parent="." unique_id=647648926]
@@ -368,20 +412,9 @@ billboard = 1
 no_depth_test = true
 fixed_size = true
 texture_filter = 0
-modulate = Color(0, 1, 0.3333335, 1)
+modulate = Color(0, 1, 0.26666665, 1)
 text = "$50"
 font = ExtResource("3_mcvl2")
-
-[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1986313292]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5362983, 0)
-billboard = 1
-no_depth_test = true
-alpha_cut = 2
-texture = SubResource("ViewportTexture_4c57u")
-
-[node name="SubViewport" type="SubViewport" parent="Sprite3D" unique_id=873399814]
-transparent_bg = true
-size = Vector2i(163, 214)
 
 [node name="ProblemTimer" type="Timer" parent="." unique_id=2124491066]
 wait_time = 10.0

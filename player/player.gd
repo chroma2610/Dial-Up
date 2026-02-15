@@ -20,25 +20,45 @@ func _ready() -> void:
 
 
 func _unhandled_key_input(event: InputEvent) -> void:
-    if event.is_action_pressed("interact") and state == states.MOVING:
-        if interaction_cast.is_colliding():
-            var interacting_object : Node3D = null
-            for i in range(interaction_cast.get_collision_count()):
-                var collider = interaction_cast.get_collider(i)
-                
-                if collider and collider.has_method("player_interaction"):
-                    if interacting_object == null:
-                        interacting_object = collider
-                    elif "interaction_priority" in interacting_object:
-                        if interacting_object.interaction_priority < collider.interaction_priority:
-                            interacting_object = collider
-                elif collider and collider.get_parent() and collider.get_parent().has_method("player_interaction"):
-                    if interacting_object == null:
-                        interacting_object = collider.get_parent()
-                    elif "interaction_priority" in interacting_object:
-                        if interacting_object.interaction_priority < collider.get_parent().interaction_priority:
-                            interacting_object = collider.get_parent()
-            toggle_interaction(interacting_object)
+    if not event.is_action_pressed("interact") or state != states.MOVING:
+        return
+    if not interaction_cast.is_colliding():
+        return
+
+    var interacting_object: Node3D = null
+
+    for i in range(interaction_cast.get_collision_count()):
+        var collider = interaction_cast.get_collider(i)
+        if collider == null:
+            continue
+
+        var candidate: Node3D = null
+        if collider.has_method("player_interaction"):
+            candidate = collider
+        elif collider.get_parent() and collider.get_parent().has_method("player_interaction"):
+            candidate = collider.get_parent()
+
+        if candidate == null:
+            continue
+
+        var candidate_priority = candidate.get("interaction_priority")
+        if candidate_priority == null or candidate_priority <= 0:
+            continue
+
+        if interacting_object == null:
+            interacting_object = candidate
+            continue
+
+        var current_priority = interacting_object.get("interaction_priority")
+        if current_priority == null:
+            current_priority = 0
+
+        if candidate_priority > current_priority:
+            interacting_object = candidate
+
+    if interacting_object != null:
+        toggle_interaction(interacting_object)
+
 
 func _physics_process(delta: float) -> void:
     if position.z < -6:
@@ -76,16 +96,16 @@ func toggle_interaction(interacting_object):
     currently_interacting_with = interacting_object
 
 func interact():
-    icons.show()
-    if state != states.INTERACTING:
-        state = states.INTERACTING
-        progress_bar.value = 0
-    if progress_bar.value < 100:
-        progress_bar.value += 1
-    else:
-        icons.hide()
-        progress_bar.value = 0
-        currently_interacting_with.player_interaction()
-        currently_interacting_with = null
-        state = states.MOVING
+    if currently_interacting_with != null:
+        icons.show()
+        if state != states.INTERACTING:
+            state = states.INTERACTING
+            progress_bar.value = 0
+        if progress_bar.value < 100:
+            progress_bar.value += 1
+        else:
+            icons.hide()
+            progress_bar.value = 0
+            currently_interacting_with.player_interaction(self)
+            currently_interacting_with = null
     

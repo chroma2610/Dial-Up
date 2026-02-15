@@ -12,7 +12,6 @@
 [ext_resource type="Script" uid="uid://2rv4v7drf4an" path="res://manager_screen_overlay.gd" id="10_dg77c"]
 [ext_resource type="PackedScene" uid="uid://d3qmt3woblwxt" path="res://manager_screen.tscn" id="10_efxa6"]
 [ext_resource type="FontFile" uid="uid://v130t0q7i60u" path="res://04B_03_.TTF" id="12_dg77c"]
-[ext_resource type="PackedScene" uid="uid://cp8das1ubnvcv" path="res://npc_spawner.tscn" id="12_ycdy4"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1bvp3"]
 sky_top_color = Color(0.115199976, 0.09599999, 0.24, 1)
@@ -192,8 +191,19 @@ transform = Transform3D(7.54979e-08, 0, -1, 0, 1, 0, 1, 0, 7.54979e-08, -7.30922
 off_screen_material = null
 on_screen_material = null
 
-[node name="ManagerScreenOverlay" type="Control" parent="computers/ManagerComputer" unique_id=741290142]
-visible = false
+[node name="NPC" parent="." unique_id=756004745 instance=ExtResource("7_5vw27")]
+
+[node name="Label" type="Label" parent="." unique_id=1483315904]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -34.0
+offset_right = 34.0
+offset_bottom = 23.0
+grow_horizontal = 2
+script = ExtResource("10_4c57u")
+
+[node name="ManagerScreenOverlay" type="Control" parent="." unique_id=741290142]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -202,7 +212,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("10_dg77c")
 
-[node name="ColorRect" type="ColorRect" parent="computers/ManagerComputer/ManagerScreenOverlay" unique_id=402759714]
+[node name="ColorRect" type="ColorRect" parent="ManagerScreenOverlay" unique_id=402759714]
 z_index = -1
 layout_mode = 1
 anchors_preset = 15
@@ -212,7 +222,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.06299997, 0, 0.14, 1)
 
-[node name="CenterContainer" type="CenterContainer" parent="computers/ManagerComputer/ManagerScreenOverlay" unique_id=330819852]
+[node name="CenterContainer" type="CenterContainer" parent="ManagerScreenOverlay" unique_id=330819852]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -228,20 +238,18 @@ grow_vertical = 2
 scale = Vector2(2.23, 2.23)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="computers/ManagerComputer/ManagerScreenOverlay/CenterContainer" unique_id=1918709119]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="ManagerScreenOverlay/CenterContainer" unique_id=1918709119]
 layout_mode = 2
 
-[node name="SubViewport" type="SubViewport" parent="computers/ManagerComputer/ManagerScreenOverlay/CenterContainer/SubViewportContainer" unique_id=1491292276]
+[node name="SubViewport" type="SubViewport" parent="ManagerScreenOverlay/CenterContainer/SubViewportContainer" unique_id=1491292276]
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(640, 480)
-render_target_update_mode = 0
+render_target_update_mode = 4
 
-[node name="ManagerScreen" parent="computers/ManagerComputer/ManagerScreenOverlay/CenterContainer/SubViewportContainer/SubViewport" unique_id=1972239438 instance=ExtResource("10_efxa6")]
-position = Vector2(320, 240)
-font = ExtResource("12_dg77c")
+[node name="ManagerScreen" parent="ManagerScreenOverlay/CenterContainer/SubViewportContainer/SubViewport" unique_id=1972239438 instance=ExtResource("10_efxa6")]
 
-[node name="Button2" type="Button" parent="computers/ManagerComputer/ManagerScreenOverlay/CenterContainer/SubViewportContainer/SubViewport/ManagerScreen" unique_id=536207806]
+[node name="Button" type="Button" parent="ManagerScreenOverlay/CenterContainer/SubViewportContainer/SubViewport/ManagerScreen" unique_id=536207806]
 offset_left = -315.2466
 offset_top = -235.87444
 offset_right = -268.2466
@@ -253,20 +261,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_ycdy4")
 theme_override_styles/hover = SubResource("StyleBoxFlat_dg77c")
 text = "Power Off"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="computers/ManagerComputer/ManagerScreenOverlay" unique_id=1477972835]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ManagerScreenOverlay" unique_id=1477972835]
 libraries/ = SubResource("AnimationLibrary_w48qg")
 
-[node name="Label" type="Label" parent="." unique_id=1483315904]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -34.0
-offset_right = 34.0
-offset_bottom = 23.0
-grow_horizontal = 2
-script = ExtResource("10_4c57u")
-
-[node name="NPCSpawner" parent="." unique_id=692574738 instance=ExtResource("12_ycdy4")]
-scene = ExtResource("7_5vw27")
-
-[connection signal="pressed" from="computers/ManagerComputer/ManagerScreenOverlay/CenterContainer/SubViewportContainer/SubViewport/ManagerScreen/Button2" to="computers/ManagerComputer/ManagerScreenOverlay" method="_on_button_pressed"]
+[connection signal="pressed" from="ManagerScreenOverlay/CenterContainer/SubViewportContainer/SubViewport/ManagerScreen/Button" to="ManagerScreenOverlay" method="_on_button_pressed"]

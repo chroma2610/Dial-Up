@@ -1,0 +1,150 @@
+[gd_scene format=3 uid="uid://d3qmt3woblwxt"]
+
+[ext_resource type="Script" uid="uid://ec0s85524v6t" path="res://manager_screen.gd" id="1_413jp"]
+[ext_resource type="Texture2D" uid="uid://c2uw4stifwirn" path="res://windowsxp.png" id="1_n4rfs"]
+[ext_resource type="FontFile" uid="uid://v130t0q7i60u" path="res://04B_03_.TTF" id="2_8vke3"]
+[ext_resource type="Texture2D" uid="uid://bsxu2ffjngnij" path="res://manager terminal window.png" id="2_413jp"]
+[ext_resource type="Texture2D" uid="uid://c2mfh0oeka6po" path="res://inbox window.png" id="4_a24fn"]
+[ext_resource type="Script" uid="uid://cgyon48fo3mbn" path="res://inbox.gd" id="6_i6yc8"]
+
+[node name="ManagerScreen" type="Node2D" unique_id=1088967209 node_paths=PackedStringArray("grid")]
+script = ExtResource("1_413jp")
+grid = NodePath("Sprite2D/MarginContainer/VBoxContainer/GridContainer")
+h_separation = 25
+v_separation = 20
+font_size = 8
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=323538623]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_n4rfs")
+
+[node name="Sprite2D" type="TextureRect" parent="." unique_id=1884418468]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.0
+offset_top = -86.0
+offset_right = 248.0
+offset_bottom = 90.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_413jp")
+
+[node name="MarginContainer" type="MarginContainer" parent="Sprite2D" unique_id=2069834780]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -118.0
+offset_top = -57.0
+offset_right = 118.0
+offset_bottom = 77.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Sprite2D/MarginContainer" unique_id=770279622]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="Sprite2D/MarginContainer/VBoxContainer" unique_id=918780268]
+layout_mode = 2
+theme_override_constants/h_separation = 88
+theme_override_constants/v_separation = 12
+columns = 2
+
+[node name="Label" type="Label" parent="Sprite2D/MarginContainer/VBoxContainer/GridContainer" unique_id=1430962254]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 8
+text = "hello"
+
+[node name="Label2" type="Label" parent="Sprite2D/MarginContainer/VBoxContainer/GridContainer" unique_id=618423993]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 8
+text = "hello"
+
+[node name="Label3" type="Label" parent="Sprite2D/MarginContainer/VBoxContainer/GridContainer" unique_id=637961584]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 8
+text = "hello"
+
+[node name="Label4" type="Label" parent="Sprite2D/MarginContainer/VBoxContainer/GridContainer" unique_id=1875317880]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 8
+text = "hello"
+
+[node name="Label5" type="Label" parent="Sprite2D/MarginContainer/VBoxContainer/GridContainer" unique_id=909703578]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 8
+text = "hello"
+
+[node name="Label6" type="Label" parent="Sprite2D/MarginContainer/VBoxContainer/GridContainer" unique_id=1233118920]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 8
+text = "hello"
+
+[node name="Label7" type="Label" parent="Sprite2D/MarginContainer/VBoxContainer/GridContainer" unique_id=1263928964]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 8
+text = "hello"
+
+[node name="Label8" type="Label" parent="Sprite2D/MarginContainer/VBoxContainer/GridContainer" unique_id=913113294]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 8
+text = "hello"
+
+[node name="close" type="Button" parent="Sprite2D" unique_id=1839069516]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 243.0
+offset_top = 1.0
+offset_right = 256.0
+offset_bottom = 14.0
+
+[node name="Inbox" type="TextureRect" parent="." unique_id=1781897817]
+offset_left = -287.0
+offset_top = -54.0
+offset_right = -29.0
+offset_bottom = 122.0
+texture = ExtResource("4_a24fn")
+
+[node name="Label" type="RichTextLabel" parent="Inbox" unique_id=1389415820]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 19.0
+offset_right = 188.0
+offset_bottom = 42.0
+theme_override_constants/line_separation = 2
+theme_override_fonts/normal_font = ExtResource("2_8vke3")
+theme_override_font_sizes/normal_font_size = 8
+bbcode_enabled = true
+text = "from: City Utilities (billing@cityutilities.com)
+subject: [color=red]PAY YOUR BILLS[/color]"
+scroll_active = false
+
+[node name="Label2" type="RichTextLabel" parent="Inbox" unique_id=323473857]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 44.0
+offset_right = 243.0
+offset_bottom = 179.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("2_8vke3")
+theme_override_font_sizes/normal_font_size = 8
+bbcode_enabled = true
+scroll_active = false
+script = ExtResource("6_i6yc8")
