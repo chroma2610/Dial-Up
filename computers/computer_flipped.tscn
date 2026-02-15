@@ -1,15 +1,16 @@
-[gd_scene format=4 uid="uid://dxr5ac3yn3t3m"]
+[gd_scene format=4 uid="uid://4ms5narfkt8"]
 
-[ext_resource type="Script" uid="uid://c57k2m8ymirtm" path="res://assets/computer.gd" id="1_4dp6j"]
+[ext_resource type="Script" uid="uid://b4c41iif2pa3b" path="res://computers/computer.gd" id="1_vysss"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h4ipl"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vysss"]
 albedo_color = Color(0, 0, 0, 1)
 roughness = 0.0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jccxw"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h3gpb"]
 roughness = 0.0
 emission_enabled = true
 emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 2.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p7jdr"]
 resource_name = "Material.037"
@@ -245,16 +246,16 @@ shadow_mesh = SubResource("ArrayMesh_wmqjc")
 size = Vector3(1.8187256, 1.5860596, 1.9665527)
 
 [node name="computer" type="Area3D" unique_id=1013195029]
-script = ExtResource("1_4dp6j")
-off_screen_material = SubResource("StandardMaterial3D_h4ipl")
-on_screen_material = SubResource("StandardMaterial3D_jccxw")
+script = ExtResource("1_vysss")
+off_screen_material = SubResource("StandardMaterial3D_vysss")
+on_screen_material = SubResource("StandardMaterial3D_h3gpb")
 
 [node name="tv" type="MeshInstance3D" parent="." unique_id=394745105]
 transform = Transform3D(-0.8016106, -1.3059896e-07, -1.3059896e-07, 1.3059896e-07, 0, -0.8016106, 1.3059896e-07, -0.8016106, 2.1277276e-14, 0, 0, 0)
 mesh = SubResource("ArrayMesh_bhnlj")
 
 [node name="Cube_016" type="MeshInstance3D" parent="tv" unique_id=847569472]
-transform = Transform3D(4.118274e-08, -2.493182e-08, 0.26379496, 0.34546587, 2.493182e-08, -3.1446806e-08, 2.059137e-08, -0.41828647, -1.5723408e-08, 0.81921273, 0.118798755, -0.36633256)
+transform = Transform3D(4.118274e-08, -2.4931825e-08, 0.26379496, 0.34546587, 2.493182e-08, -3.1446813e-08, 2.0591372e-08, -0.41828647, -1.5723412e-08, -0.819, 0.119, -0.366)
 mesh = SubResource("ArrayMesh_gxl5a")
 
 [node name="keyboard_014" type="MeshInstance3D" parent="tv" unique_id=510107420]

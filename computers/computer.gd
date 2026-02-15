@@ -13,3 +13,4 @@ func toggle_power():
         tv.set_surface_override_material(1, on_screen_material)
     else:
         tv.set_surface_override_material(1, off_screen_material)
+    

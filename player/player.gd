@@ -3,15 +3,42 @@ extends CharacterBody3D
 @onready var sprite: AnimatedSprite3D = $sprite
 @onready var interaction_cast: ShapeCast3D = $InteractionCast
 @onready var camera: Camera3D = $Camera3D
+@onready var progress_bar: ProgressBar = $Icons/SubViewport/ProgressBar
+@onready var icons: Sprite3D = $Icons
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 const GROUND_FRICTION := 0.7
 
+enum states {MOVING, INTERACTING, CARRYING}
+var state := states.MOVING
+var currently_interacting_with
+
+func _ready() -> void:
+    state = states.MOVING
+    icons.hide()
+
+
 func _unhandled_key_input(event: InputEvent) -> void:
-    if event.is_action_pressed("interact"):
+    if event.is_action_pressed("interact") and state == states.MOVING:
         if interaction_cast.is_colliding():
-            print(interaction_cast.get_collider(0))
+            var interacting_object : Node3D = null
+            for i in range(interaction_cast.get_collision_count()):
+                var collider = interaction_cast.get_collider(i)
+                
+                if collider and collider.has_method("player_interaction"):
+                    if interacting_object == null:
+                        interacting_object = collider
+                    elif "interaction_priority" in interacting_object:
+                        if interacting_object.interaction_priority < collider.interaction_priority:
+                            interacting_object = collider
+                elif collider and collider.get_parent() and collider.get_parent().has_method("player_interaction"):
+                    if interacting_object == null:
+                        interacting_object = collider.get_parent()
+                    elif "interaction_priority" in interacting_object:
+                        if interacting_object.interaction_priority < collider.get_parent().interaction_priority:
+                            interacting_object = collider.get_parent()
+            toggle_interaction(interacting_object)
 
 func _physics_process(delta: float) -> void:
     if position.z < -6:
@@ -22,12 +49,15 @@ func _physics_process(delta: float) -> void:
     # As good practice, you should replace UI actions with custom gameplay actions.
     var input_dir := Input.get_vector("left", "right", "up", "down")
     var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-    
     handle_ground_movement(direction)
+    if state == states.INTERACTING:
+        interact()
+        
+
     move_and_slide()
     
 func handle_ground_movement(direction):
-    if direction:
+    if direction and state == states.MOVING:
         interaction_cast.target_position = direction
         if direction.x > 0: sprite.flip_h = true
         elif direction.x < 0: sprite.flip_h = false
@@ -40,3 +70,22 @@ func handle_ground_movement(direction):
         v = v.move_toward(Vector2.ZERO, GROUND_FRICTION)
         velocity.x = v.x
         velocity.z = v.y
+
+func toggle_interaction(interacting_object):
+    state = states.INTERACTING
+    currently_interacting_with = interacting_object
+
+func interact():
+    icons.show()
+    if state != states.INTERACTING:
+        state = states.INTERACTING
+        progress_bar.value = 0
+    if progress_bar.value < 100:
+        progress_bar.value += 1
+    else:
+        icons.hide()
+        progress_bar.value = 0
+        currently_interacting_with.player_interaction()
+        currently_interacting_with = null
+        state = states.MOVING
+    

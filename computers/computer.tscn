@@ -1,15 +1,16 @@
-[gd_scene format=4 uid="uid://4ms5narfkt8"]
+[gd_scene format=4 uid="uid://dxr5ac3yn3t3m"]
 
-[ext_resource type="Script" uid="uid://c57k2m8ymirtm" path="res://assets/computer.gd" id="1_vysss"]
+[ext_resource type="Script" uid="uid://b4c41iif2pa3b" path="res://computers/computer.gd" id="1_4dp6j"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vysss"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h4ipl"]
 albedo_color = Color(0, 0, 0, 1)
 roughness = 0.0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h3gpb"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jccxw"]
 roughness = 0.0
 emission_enabled = true
 emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 2.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p7jdr"]
 resource_name = "Material.037"
@@ -206,7 +207,7 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_1c5ok")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m31c6"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4dp6j"]
 albedo_color = Color(0.3, 0.3, 0.3, 1)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_wmqjc"]
@@ -245,22 +246,22 @@ shadow_mesh = SubResource("ArrayMesh_wmqjc")
 size = Vector3(1.8187256, 1.5860596, 1.9665527)
 
 [node name="computer" type="Area3D" unique_id=1013195029]
-script = ExtResource("1_vysss")
-off_screen_material = SubResource("StandardMaterial3D_vysss")
-on_screen_material = SubResource("StandardMaterial3D_h3gpb")
+script = ExtResource("1_4dp6j")
+off_screen_material = SubResource("StandardMaterial3D_h4ipl")
+on_screen_material = SubResource("StandardMaterial3D_jccxw")
 
 [node name="tv" type="MeshInstance3D" parent="." unique_id=394745105]
 transform = Transform3D(-0.8016106, -1.3059896e-07, -1.3059896e-07, 1.3059896e-07, 0, -0.8016106, 1.3059896e-07, -0.8016106, 2.1277276e-14, 0, 0, 0)
 mesh = SubResource("ArrayMesh_bhnlj")
 
 [node name="Cube_016" type="MeshInstance3D" parent="tv" unique_id=847569472]
-transform = Transform3D(4.118274e-08, -2.4931825e-08, 0.26379496, 0.34546587, 2.493182e-08, -3.1446813e-08, 2.0591372e-08, -0.41828647, -1.5723412e-08, -0.819, 0.119, -0.366)
+transform = Transform3D(4.118274e-08, -2.493182e-08, 0.26379496, 0.34546587, 2.493182e-08, -3.1446806e-08, 2.059137e-08, -0.41828647, -1.5723408e-08, 0.81921273, 0.118798755, -0.36633256)
 mesh = SubResource("ArrayMesh_gxl5a")
 
 [node name="keyboard_014" type="MeshInstance3D" parent="tv" unique_id=510107420]
 transform = Transform3D(0.80290157, 0, 0, 0, 0.80290157, 0, 0, 0, 0.80290157, -7.712014e-05, -0.6451588, 0.053352542)
 mesh = SubResource("ArrayMesh_gcbbq")
-surface_material_override/1 = SubResource("StandardMaterial3D_m31c6")
+surface_material_override/1 = SubResource("StandardMaterial3D_4dp6j")
 
 [node name="mouse_014" type="MeshInstance3D" parent="tv" unique_id=282051033]
 transform = Transform3D(0.5932217, 0, 0, 0, 0.5932217, 0, 0, 0, 0.5932217, -0.7579384, -0.5848604, -0.00091692933)

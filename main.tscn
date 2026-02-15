@@ -4,11 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://vykmd7y6toui" path="res://building/building.tscn" id="4_1bvp3"]
 [ext_resource type="LightmapGIData" uid="uid://cf3ky36ee0ohh" path="res://main.lmbake" id="4_lquwl"]
 [ext_resource type="PackedScene" uid="uid://cm37gyjb4b1ir" path="res://assets/tablesandplants.tscn" id="5_lquwl"]
-[ext_resource type="PackedScene" uid="uid://4ms5narfkt8" path="res://assets/computer_flipped.tscn" id="6_5vw27"]
-[ext_resource type="PackedScene" uid="uid://dxr5ac3yn3t3m" path="res://assets/computer.tscn" id="6_7mycd"]
-[ext_resource type="Script" uid="uid://q45uycndain1" path="res://npc/npc.gd" id="6_272bh"]
-[ext_resource type="Texture2D" uid="uid://bf7muxajgnh6d" path="res://icon.svg" id="7_5vw27"]
-[ext_resource type="FontFile" uid="uid://v130t0q7i60u" path="res://04B_03_.TTF" id="9_kek77"]
+[ext_resource type="PackedScene" uid="uid://4ms5narfkt8" path="res://computers/computer_flipped.tscn" id="6_5vw27"]
+[ext_resource type="PackedScene" uid="uid://dxr5ac3yn3t3m" path="res://computers/computer.tscn" id="6_7mycd"]
+[ext_resource type="PackedScene" uid="uid://t15nwyfmpfja" path="res://npc.tscn" id="7_5vw27"]
+[ext_resource type="PackedScene" uid="uid://c5scbme5jplye" path="res://computers/manager_computer.tscn" id="7_kek77"]
 [ext_resource type="Script" uid="uid://ba67ou5t3gapr" path="res://label.gd" id="10_4c57u"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1bvp3"]
@@ -35,309 +34,6 @@ size = Vector3(12.135, 19.96, 2.18)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lquwl"]
 cull_mode = 2
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_kek77"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("7_5vw27")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4c57u"]
-
-[sub_resource type="Animation" id="Animation_272bh"]
-resource_name = "1"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(-3.9858797, 1, 9.728836), Vector3(-3.606, 1, 6)]
-}
-
-[sub_resource type="Animation" id="Animation_074og"]
-resource_name = "10"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(-3.9858797, 1, 9.728836), Vector3(2.886, 1, 8.484), Vector3(3.732, 1, -1.895)]
-}
-
-[sub_resource type="Animation" id="Animation_cegan"]
-resource_name = "11"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(-3.9858797, 1, 9.728836), Vector3(2.886, 1, 8.484), Vector3(3.7320004, 1, 2.1050005)]
-}
-
-[sub_resource type="Animation" id="Animation_82xsv"]
-resource_name = "12"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(-3.9858797, 1, 9.728836), Vector3(2.886, 1, 8.484), Vector3(3.7320004, 1, 6.1050005)]
-}
-
-[sub_resource type="Animation" id="Animation_5vw27"]
-resource_name = "2"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(-3.9858797, 1, 9.728836), Vector3(-3.606, 1, 2)]
-}
-
-[sub_resource type="Animation" id="Animation_kek77"]
-resource_name = "3"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(-3.9858797, 1, 9.728836), Vector3(-3.606, 1, -2)]
-}
-
-[sub_resource type="Animation" id="Animation_ycdy4"]
-resource_name = "4"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(-3.9858797, 1, 9.728836), Vector3(-1.696, 1, -2)]
-}
-
-[sub_resource type="Animation" id="Animation_w48qg"]
-resource_name = "5"
-length = 1.0333333
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.0333333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(-3.9858797, 1, 9.728836), Vector3(-1.696, 1, 2)]
-}
-
-[sub_resource type="Animation" id="Animation_4c57u"]
-resource_name = "4"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(-3.9858797, 1, 9.728836), Vector3(-1.696, 1, 6)]
-}
-
-[sub_resource type="Animation" id="Animation_vivmo"]
-resource_name = "7"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(-3.9858797, 1, 9.728836), Vector3(1.892, 1, 6.105)]
-}
-
-[sub_resource type="Animation" id="Animation_getpj"]
-resource_name = "8"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(-3.9858797, 1, 9.728836), Vector3(1.7214036, 1, 8.483934), Vector3(1.8920002, 1, 2.105)]
-}
-
-[sub_resource type="Animation" id="Animation_ryguw"]
-resource_name = "9"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(-3.9858797, 1, 9.728836), Vector3(1.7214036, 1, 8.483934), Vector3(1.8920002, 1, -1.8949995)]
-}
-
-[sub_resource type="Animation" id="Animation_efxa6"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(8.832951, 1, 10.689069)]
-}
-
-[sub_resource type="Animation" id="Animation_dg77c"]
-resource_name = "walk through door"
-length = 2.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.7666667, 2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(8.832951, 1, 10.689069), Vector3(-3.811, 1, 10.689), Vector3(-3.9858797, 1, 9.728836)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_ycdy4"]
-_data = {
-&"1": SubResource("Animation_272bh"),
-&"10": SubResource("Animation_074og"),
-&"11": SubResource("Animation_cegan"),
-&"12": SubResource("Animation_82xsv"),
-&"2": SubResource("Animation_5vw27"),
-&"3": SubResource("Animation_kek77"),
-&"4": SubResource("Animation_ycdy4"),
-&"5": SubResource("Animation_w48qg"),
-&"6": SubResource("Animation_4c57u"),
-&"7": SubResource("Animation_vivmo"),
-&"8": SubResource("Animation_getpj"),
-&"9": SubResource("Animation_ryguw"),
-&"RESET": SubResource("Animation_efxa6"),
-&"walk through door": SubResource("Animation_dg77c")
-}
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_4c57u"]
-viewport_path = NodePath("NPC/Sprite3D/SubViewport")
-
-[sub_resource type="Animation" id="Animation_2cqfq"]
-length = 0.001
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Label:modulate:a")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Label:position:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(140, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-
-[sub_resource type="Animation" id="Animation_yaehf"]
-resource_name = "subtle rise"
-length = 2.0
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Label:modulate:a")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(1, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-"times": PackedFloat32Array(0.33333334, 0.7)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Label:position:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(127.065, -0.25, 0, 0.033333335, -82, 127.065, 0, 0, 0, 0),
-"times": PackedFloat32Array(0, 0.7)
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_074og"]
-_data = {
-&"RESET": SubResource("Animation_2cqfq"),
-&"subtle rise": SubResource("Animation_yaehf")
-}
 
 [node name="main" type="Node3D" unique_id=584693405]
 
@@ -371,10 +67,6 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0
 
 [node name="computer1" parent="computers" unique_id=1009554407 instance=ExtResource("6_5vw27")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 6.06, 0.851, 4.8646827)
-computer_number = 1
-
-[node name="ManagerComputer" parent="computers" unique_id=1013195029 instance=ExtResource("6_5vw27")]
-transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, -7.309221, 0.851, 3.5977578)
 computer_number = 1
 
 [node name="computer2" parent="computers" unique_id=504331478 instance=ExtResource("6_5vw27")]
@@ -421,63 +113,12 @@ computer_number = 11
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.059551, 0.8514782, -4.968667)
 computer_number = 12
 
-[node name="NPC" type="AnimatableBody3D" parent="." unique_id=1120340006]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.832951, 1, 10.689069)
-script = ExtResource("6_272bh")
+[node name="ManagerComputer" parent="computers" unique_id=1013195029 instance=ExtResource("7_kek77")]
+transform = Transform3D(7.54979e-08, 0, -1, 0, 1, 0, 1, 0, 7.54979e-08, -7.309221, 0.851, 4.870213)
+off_screen_material = null
+on_screen_material = null
 
-[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="NPC" unique_id=710542475]
-transform = Transform3D(0.78, 0, 0, 0, 1.55, 0, 0, 0, 1, 0, 0, 0)
-billboard = 2
-alpha_cut = 2
-sprite_frames = SubResource("SpriteFrames_kek77")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NPC" unique_id=1285456081]
-shape = SubResource("CapsuleShape3D_4c57u")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="NPC" unique_id=820446069]
-libraries/ = SubResource("AnimationLibrary_ycdy4")
-
-[node name="Sprite3D" type="Sprite3D" parent="NPC" unique_id=1879452700]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5362983, 0)
-billboard = 1
-no_depth_test = true
-alpha_cut = 2
-texture = SubResource("ViewportTexture_4c57u")
-
-[node name="SubViewport" type="SubViewport" parent="NPC/Sprite3D" unique_id=1178511940]
-transparent_bg = true
-size = Vector2i(163, 214)
-
-[node name="Label" type="Label" parent="NPC/Sprite3D/SubViewport" unique_id=271141268]
-modulate = Color(1, 1, 1, 0)
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -39.5
-offset_top = 33.0
-offset_right = 39.5
-offset_bottom = 138.40028
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(0, -2.42)
-theme_override_colors/font_color = Color(0, 1.353256, 0.41886806, 1)
-theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 4
-theme_override_constants/shadow_offset_y = 0
-theme_override_constants/outline_size = 22
-theme_override_constants/shadow_outline_size = 22
-theme_override_fonts/font = ExtResource("9_kek77")
-theme_override_font_sizes/font_size = 42
-text = "$50"
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="NPC/Sprite3D/SubViewport" unique_id=1043529864]
-libraries/ = SubResource("AnimationLibrary_074og")
-
-[node name="ProblemTimer" type="Timer" parent="NPC" unique_id=1595871641]
-wait_time = 10.0
+[node name="NPC" parent="." unique_id=756004745 instance=ExtResource("7_5vw27")]
 
 [node name="Label" type="Label" parent="." unique_id=1483315904]
 anchors_preset = 5
@@ -488,6 +129,3 @@ offset_right = 34.0
 offset_bottom = 23.0
 grow_horizontal = 2
 script = ExtResource("10_4c57u")
-
-[connection signal="animation_finished" from="NPC/AnimationPlayer" to="NPC" method="_on_animation_player_animation_finished"]
-[connection signal="timeout" from="NPC/ProblemTimer" to="NPC" method="_on_problem_timer_timeout"]

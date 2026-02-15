@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://c5scbme5jplye"]
+
+[ext_resource type="PackedScene" uid="uid://dxr5ac3yn3t3m" path="res://computers/computer.tscn" id="1_irj88"]
+[ext_resource type="Script" uid="uid://bts8umgjju8ge" path="res://computers/manager_computer.gd" id="2_e7w8r"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_irj88"]
+albedo_color = Color(0.19, 0.19, 0.19, 1)
+
+[node name="ManagerComputer" unique_id=1013195029 instance=ExtResource("1_irj88")]
+script = ExtResource("2_e7w8r")
+
+[node name="tv" parent="." index="0" unique_id=394745105]
+surface_material_override/0 = SubResource("StandardMaterial3D_irj88")
+
+[node name="Cube_016" parent="tv" index="0" unique_id=847569472]
+transform = Transform3D(4.118274e-08, -2.493182e-08, 0.26379496, 0.34546587, 2.493182e-08, -3.1446806e-08, 2.059137e-08, -0.41828647, -1.5723408e-08, -0.819, 0.119, -0.366)
+surface_material_override/0 = SubResource("StandardMaterial3D_irj88")
+
+[node name="keyboard_014" parent="tv" index="1" unique_id=510107420]
+surface_material_override/0 = SubResource("StandardMaterial3D_irj88")
