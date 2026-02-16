@@ -16,7 +16,7 @@ extends Node
 
 @export var day := 1
 
-const day_length := 240
+const day_length := 120
 var time_left := 0.0
 @export var day_over := false
 
@@ -55,7 +55,10 @@ func _process(delta: float) -> void:
             return
     
     if time_left < 0:
-        day_over = true
+        if bank_balance > total_bills:
+            day_over = true
+        else:
+            turn_off_power()
     
 
 func turn_off_power():
