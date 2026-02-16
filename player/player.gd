@@ -94,6 +94,8 @@ func handle_ground_movement(direction):
 func toggle_interaction(interacting_object):
     state = states.INTERACTING
     currently_interacting_with = interacting_object
+    if currently_interacting_with.has_method("start_player_interaction"):
+        currently_interacting_with.start_player_interaction()
 
 func interact():
     if currently_interacting_with != null:

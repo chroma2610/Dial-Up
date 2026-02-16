@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://d3qmt3woblwxt" path="res://manager_screen.tscn" id="10_efxa6"]
 [ext_resource type="FontFile" uid="uid://v130t0q7i60u" path="res://04B_03_.TTF" id="12_dg77c"]
 [ext_resource type="PackedScene" uid="uid://cp8das1ubnvcv" path="res://npc_spawner.tscn" id="12_ycdy4"]
+[ext_resource type="PackedScene" uid="uid://dpufvavyrqs80" path="res://assets/environment.tscn" id="14_w48qg"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1bvp3"]
 sky_top_color = Color(0.115199976, 0.09599999, 0.24, 1)
@@ -29,12 +30,15 @@ sky_material = SubResource("ProceduralSkyMaterial_1bvp3")
 
 [sub_resource type="Environment" id="Environment_h2yge"]
 background_mode = 2
+background_energy_multiplier = 0.3
 sky = SubResource("Sky_0xm2m")
 tonemap_mode = 2
 glow_enabled = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_7mycd"]
-size = Vector3(12.135, 19.96, 2.18)
+lightmap_size_hint = Vector2i(74, 266)
+add_uv2 = true
+size = Vector3(12.135, 19.96, 2.04)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lquwl"]
 cull_mode = 2
@@ -114,6 +118,7 @@ _data = {
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=814861487]
 transform = Transform3D(0.6442849, 0.70228493, -0.3028079, -0.61431456, 0.71106607, 0.34205627, 0.45553726, -0.034362346, 0.88955307, 0, 0, 0)
 light_color = Color(0.299, 0.299, 0.46, 1)
+light_energy = 0.5
 light_bake_mode = 1
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=496595740]
@@ -123,15 +128,14 @@ environment = SubResource("Environment_h2yge")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.88049316, -4.660247)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1350909099]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 4.9949436, 0)
-cast_shadow = 3
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 5.019414, 0)
+visible = false
 mesh = SubResource("BoxMesh_7mycd")
 surface_material_override/0 = SubResource("StandardMaterial3D_lquwl")
 
 [node name="building" parent="." unique_id=998610778 instance=ExtResource("4_1bvp3")]
 
 [node name="LightmapGI" type="LightmapGI" parent="." unique_id=853580440]
-environment_mode = 0
 light_data = ExtResource("4_lquwl")
 
 [node name="tablesandplants" parent="." unique_id=106291938 instance=ExtResource("5_lquwl")]
@@ -269,6 +273,6 @@ script = ExtResource("10_4c57u")
 [node name="NPCSpawner" parent="." unique_id=692574738 instance=ExtResource("12_ycdy4")]
 scene = ExtResource("7_5vw27")
 
-[node name="NPC" parent="." unique_id=756004745 instance=ExtResource("7_5vw27")]
+[node name="Environment" parent="." unique_id=1697760347 instance=ExtResource("14_w48qg")]
 
 [connection signal="pressed" from="computers/ManagerComputer/ManagerScreenOverlay/CenterContainer/SubViewportContainer/SubViewport/ManagerScreen/Button2" to="computers/ManagerComputer/ManagerScreenOverlay" method="_on_button_pressed"]

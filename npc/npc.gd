@@ -11,14 +11,18 @@ extends AnimatableBody3D
 
 var annoyed_meter := 0.0
 var impatience := 5
+@export var annoyed_limit := 100.0
 
 var interaction_priority = 0
 
-enum states {MOVING, COMPUTER, ISSUE, LEAVING}
+enum states {MOVING, WAITING, COMPUTER, ISSUE, LEAVING}
 var state := states.MOVING
 
-var assigned_computer : int
+var assigned_computer_num = null
+var assigned_computer = null
 var at_computer : bool
+
+var angry := ""
 
 var previous_position : Vector3
 func _ready() -> void:
@@ -31,10 +35,10 @@ func _ready() -> void:
     state = states.MOVING
     at_computer = false
     randomize()
-    assigned_computer = randi_range(1, 12)
-    while assigned_computer in Global.occupied_computers:
-        assigned_computer = randi_range(1, 12)
-    Global.occupied_computers.append(assigned_computer)
+    assigned_computer_num = randi_range(1, 12)
+    while assigned_computer_num in Global.occupied_computers:
+        assigned_computer_num = randi_range(1, 12)
+    Global.occupied_computers.append(assigned_computer_num)
     movement_animator.play("walk through door")
     
 var money_timer := 0.0
@@ -51,8 +55,18 @@ func _process(delta: float) -> void:
     previous_position = global_position
     if state == states.COMPUTER:
         active_working(delta)
-    elif state == states.ISSUE:
+    elif state == states.ISSUE or state == states.WAITING:
         annoyed_meter += impatience * delta
+        if annoyed_meter > annoyed_limit:
+            leave()
+        elif annoyed_meter > annoyed_limit / 2:
+            angry = "angry"
+            if sprite.animation == "idle":
+                sprite.play("angryidle")
+        else: 
+            angry = ""
+            if sprite.animation == "angryidle":
+                sprite.play("idle")
         
         
 
@@ -66,17 +80,24 @@ func active_working(delta):
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
     if anim_name == "walk through door":
+        state = states.WAITING
+        warning.show()
         interaction_priority = 999
         sprite.play("idle")
-    else:
+    elif state != states.LEAVING:
         for computer in computers:
-            if computer.computer_number == assigned_computer:
-                sprite.play("idle")
+            if computer.computer_number == assigned_computer_num:
+                assigned_computer = computer
+                sprite.play("typing")
                 interaction_priority = 0
                 state = states.COMPUTER
-                computer.toggle_power()
+                assigned_computer.toggle_power()
                 at_computer = true
                 event_timer.start()
+    else:
+        assigned_computer.toggle_power()
+        interaction_priority = 0
+        queue_free()
 
 func add_money(money):
     Global.bank_balance += money
@@ -87,22 +108,37 @@ func add_money(money):
 
 func _on_problem_timer_timeout() -> void:
     if state == states.COMPUTER:
-        if annoyed_meter > 100:
-            state = states.LEAVING
-        randomize()
         if Global.customers_with_issues < 3:
             if randi_range(0, 3) == 1:
+                sprite.play(str(angry) + "idle")
                 interaction_priority = 999
                 warning.show()
-                event_timer.stop()
                 state = states.ISSUE
+                event_timer.stop()
                 Global.customers_with_issues += 1
 
 func problem_fixed():
+    sprite.play("typing")
+    annoyed_meter -= annoyed_limit * 0.3
     Global.customers_with_issues -= 1
     warning.hide()
     event_timer.start()
     state = states.COMPUTER
+
+func leave():
+    sprite.play("angrywalk")
+    Global.customers_with_issues -= 1
+    warning.hide()
+    movement_animator.speed_scale = 0.8
+    if state == states.WAITING:
+        movement_animator.play(str(assigned_computer_num)+"leave")
+    else:
+        movement_animator.play(str(assigned_computer_num)+"leave")
+    state = states.LEAVING
+    Global.occupied_computers.erase(assigned_computer_num)
+    Global.total_customers -= 1
+    assigned_computer_num = null   
+    event_timer.stop()
 
 
 func _on_text_animator_animation_finished(anim_name: StringName) -> void:
@@ -111,11 +147,16 @@ func _on_text_animator_animation_finished(anim_name: StringName) -> void:
 func player_interaction(player):
     player.state = states.MOVING
     if at_computer == false:
+        warning.hide()
         Global.checking_in = false
         Global.total_customers += 1
-        movement_animator.play(str(assigned_computer))
+        movement_animator.play(str(assigned_computer_num))
         sprite.play("walk")
+        annoyed_meter = 0
     elif state == states.ISSUE:
         problem_fixed()
+
+func start_player_interation():
+    state = states.COMPUTER
         
     
