@@ -119,7 +119,7 @@ func _on_problem_timer_timeout() -> void:
 
 func problem_fixed():
     sprite.play("typing")
-    annoyed_meter -= annoyed_limit * 0.3
+    annoyed_meter -= annoyed_limit * 0.1
     Global.customers_with_issues -= 1
     warning.hide()
     event_timer.start()
