@@ -29,10 +29,14 @@ var power_down_timer := 0.0
 var timer_on : bool
 
 func _ready() -> void:
-    bank_balance = 10000
+    bank_balance = 0
     time_left = day_length
 
 func _process(delta: float) -> void:
+    if get_tree().current_scene == null:
+        return
+    if get_tree().current_scene.name != "main":
+        return
     time_left -= delta
     print(time_left)
     bills += delta * bill_speed

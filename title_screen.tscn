@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://dejedqo3rcjfk"]
 
+[ext_resource type="Script" uid="uid://cgpmemk4x1t14" path="res://title_screen.gd" id="1_lf08s"]
 [ext_resource type="PackedScene" uid="uid://vykmd7y6toui" path="res://building/building.tscn" id="1_rhgbh"]
 [ext_resource type="LightmapGIData" uid="uid://cf3ky36ee0ohh" path="res://main.lmbake" id="2_skmiq"]
 [ext_resource type="PackedScene" uid="uid://cm37gyjb4b1ir" path="res://assets/tablesandplants.tscn" id="3_lf08s"]
@@ -10,7 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://d3qmt3woblwxt" path="res://manager_screen.tscn" id="8_l4tom"]
 [ext_resource type="FontFile" uid="uid://v130t0q7i60u" path="res://04B_03_.TTF" id="9_y8ura"]
 [ext_resource type="PackedScene" uid="uid://dpufvavyrqs80" path="res://assets/environment.tscn" id="10_aav61"]
-[ext_resource type="PackedScene" uid="uid://crld4ccgll3w3" path="res://Coffee Machine.fbx" id="11_a64np"]
+[ext_resource type="Texture2D" uid="uid://pli1gym4qnre" path="res://npc/logo.png" id="11_rhgbh"]
+[ext_resource type="FontFile" uid="uid://chmb58jg7hbhv" path="res://04B_11_.TTF" id="12_skmiq"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_g2tdu"]
 sky_top_color = Color(0.115199976, 0.09599999, 0.24, 1)
@@ -103,6 +105,7 @@ _data = {
 }
 
 [node name="TitleScreen" type="Node3D" unique_id=1597529113]
+script = ExtResource("1_lf08s")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1072600243]
 transform = Transform3D(0.6442849, 0.70228493, -0.3028079, -0.61431456, 0.71106607, 0.34205627, 0.45553726, -0.034362346, 0.88955307, 0, 0, 0)
@@ -242,7 +245,66 @@ libraries/ = SubResource("AnimationLibrary_4crdw")
 
 [node name="Environment" parent="." unique_id=1697760347 instance=ExtResource("10_aav61")]
 
-[node name="Coffee Machine" parent="." unique_id=411310634 instance=ExtResource("11_a64np")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.4689803, 0.8133545, -7.611947)
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1109532170]
+transform = Transform3D(1, 0, 0, 0, 0.96462184, 0.26363733, 0, -0.26363733, 0.96462184, 0, 9.654267, 21.584238)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera3D" unique_id=62913203]
+
+[node name="ColorRect" type="ColorRect" parent="Camera3D/CanvasLayer" unique_id=53016995]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -220.0
+offset_top = -507.0
+offset_right = 220.0
+offset_bottom = -67.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.12156863)
+
+[node name="TextureRect" type="TextureRect" parent="Camera3D/CanvasLayer" unique_id=756741502]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -377.0
+offset_right = 253.0
+offset_bottom = 500.0
+grow_horizontal = 2
+texture = ExtResource("11_rhgbh")
+
+[node name="Button" type="Button" parent="Camera3D/CanvasLayer" unique_id=650971580]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -295.39288
+offset_top = 71.0
+offset_right = 295.39282
+offset_bottom = 197.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("12_skmiq")
+theme_override_font_sizes/font_size = 62
+text = "Start Shift"
+
+[node name="Label" type="Label" parent="Camera3D/CanvasLayer" unique_id=882807543]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -269.0
+offset_top = -57.0
+offset_right = 269.0
+offset_bottom = -18.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("9_y8ura")
+theme_override_font_sizes/font_size = 38
+text = "A 90's Internet Cafe Game"
 
 [connection signal="pressed" from="computers/ManagerComputer/ManagerScreenOverlay/CenterContainer/SubViewportContainer/SubViewport/ManagerScreen/Button2" to="computers/ManagerComputer/ManagerScreenOverlay" method="_on_button_pressed"]
+[connection signal="pressed" from="Camera3D/CanvasLayer/Button" to="." method="_on_button_pressed"]

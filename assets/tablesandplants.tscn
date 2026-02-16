@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://cm37gyjb4b1ir"]
 
 [ext_resource type="Texture2D" uid="uid://ck1tg24735a7o" path="res://assets/tablesandplants_WhatsApp Image 2022-01-14 at 10.31.jpg" id="1_ekf34"]
+[ext_resource type="PackedScene" uid="uid://dsf5hy08a5o2l" path="res://coffee_maker.tscn" id="2_hoole"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ei4k1"]
 size = Vector3(2.4315186, 0.81726074, 3.4487305)
@@ -3536,3 +3537,6 @@ mesh = SubResource("ArrayMesh_pctkr")
 [node name="table_020" type="MeshInstance3D" parent="." unique_id=348422035]
 transform = Transform3D(-1, -1.9470721e-07, -1.9470721e-07, 1.9470721e-07, 0, -1, 1.9470721e-07, -1, 0, 4.0045567, 0.43517986, -7.465159)
 mesh = SubResource("ArrayMesh_kyb5r")
+
+[node name="CoffeeMaker" parent="." unique_id=619626016 instance=ExtResource("2_hoole")]
+transform = Transform3D(-9.070112e-08, 0, -2.075, 0, 2.075, 0, 2.075, 0, -9.070112e-08, 5.2130513, 1.2301136, -9.002618)
