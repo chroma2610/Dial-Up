@@ -1,0 +1,248 @@
+[gd_scene format=3 uid="uid://dejedqo3rcjfk"]
+
+[ext_resource type="PackedScene" uid="uid://vykmd7y6toui" path="res://building/building.tscn" id="1_rhgbh"]
+[ext_resource type="LightmapGIData" uid="uid://cf3ky36ee0ohh" path="res://main.lmbake" id="2_skmiq"]
+[ext_resource type="PackedScene" uid="uid://cm37gyjb4b1ir" path="res://assets/tablesandplants.tscn" id="3_lf08s"]
+[ext_resource type="PackedScene" uid="uid://4ms5narfkt8" path="res://computers/computer_flipped.tscn" id="4_n1yhu"]
+[ext_resource type="PackedScene" uid="uid://dxr5ac3yn3t3m" path="res://computers/computer.tscn" id="5_q7w76"]
+[ext_resource type="PackedScene" uid="uid://c5scbme5jplye" path="res://computers/manager_computer.tscn" id="6_wot2p"]
+[ext_resource type="Script" uid="uid://2rv4v7drf4an" path="res://manager_screen_overlay.gd" id="7_kvwfe"]
+[ext_resource type="PackedScene" uid="uid://d3qmt3woblwxt" path="res://manager_screen.tscn" id="8_l4tom"]
+[ext_resource type="FontFile" uid="uid://v130t0q7i60u" path="res://04B_03_.TTF" id="9_y8ura"]
+[ext_resource type="PackedScene" uid="uid://dpufvavyrqs80" path="res://assets/environment.tscn" id="10_aav61"]
+[ext_resource type="PackedScene" uid="uid://crld4ccgll3w3" path="res://Coffee Machine.fbx" id="11_a64np"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_g2tdu"]
+sky_top_color = Color(0.115199976, 0.09599999, 0.24, 1)
+sky_horizon_color = Color(0, 0, 0.14117648, 1)
+sky_energy_multiplier = 0.7
+ground_bottom_color = Color(0.11372549, 0.09411765, 0.23921569, 1)
+ground_horizon_color = Color(0, 0, 0.14117648, 1)
+ground_curve = 0.97005934
+ground_energy_multiplier = 0.7
+sun_curve = 1.0814948
+
+[sub_resource type="Sky" id="Sky_0xm2m"]
+sky_material = SubResource("ProceduralSkyMaterial_g2tdu")
+
+[sub_resource type="Environment" id="Environment_7yan6"]
+background_mode = 2
+background_energy_multiplier = 0.3
+sky = SubResource("Sky_0xm2m")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4h4vs"]
+bg_color = Color(0.6, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fd0ao"]
+bg_color = Color(0.34, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g3bb0"]
+bg_color = Color(0.6, 0.28800002, 0.28800002, 1)
+
+[sub_resource type="Animation" id="Animation_dg77c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CenterContainer/SubViewportContainer/SubViewport/ManagerScreen:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(320, 240)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.06299997, 0, 0.14, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ycdy4"]
+resource_name = "slide"
+length = 0.93333334
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CenterContainer/SubViewportContainer/SubViewport/ManagerScreen:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.26666668, 0.70000005),
+"transitions": PackedFloat32Array(0.2871746, 1),
+"update": 0,
+"values": [Vector2(320, 750), Vector2(320, 240)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.03333336, 0.26666668),
+"transitions": PackedFloat32Array(2.0705302, 1),
+"update": 0,
+"values": [Color(0.06299997, 0, 0.14, 0), Color(0.06299997, 0, 0.14, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4crdw"]
+_data = {
+&"RESET": SubResource("Animation_dg77c"),
+&"slide": SubResource("Animation_ycdy4")
+}
+
+[node name="TitleScreen" type="Node3D" unique_id=1597529113]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1072600243]
+transform = Transform3D(0.6442849, 0.70228493, -0.3028079, -0.61431456, 0.71106607, 0.34205627, 0.45553726, -0.034362346, 0.88955307, 0, 0, 0)
+light_color = Color(0.299, 0.299, 0.46, 1)
+light_energy = 0.5
+light_bake_mode = 1
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=629302116]
+environment = SubResource("Environment_7yan6")
+
+[node name="building" parent="." unique_id=998610778 instance=ExtResource("1_rhgbh")]
+
+[node name="LightmapGI" type="LightmapGI" parent="." unique_id=1565781393]
+light_data = ExtResource("2_skmiq")
+
+[node name="tablesandplants" parent="." unique_id=106291938 instance=ExtResource("3_lf08s")]
+
+[node name="computers" type="Node3D" parent="." unique_id=1758058026]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
+
+[node name="computer1" parent="computers" unique_id=1013195029 instance=ExtResource("4_n1yhu")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 6.06, 0.851, 4.8646827)
+computer_number = 1
+
+[node name="computer2" parent="computers" unique_id=1899250295 instance=ExtResource("4_n1yhu")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 2.0600002, 0.851, 4.864683)
+computer_number = 2
+
+[node name="computer3" parent="computers" unique_id=449292728 instance=ExtResource("4_n1yhu")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -1.9399998, 0.851, 4.864683)
+computer_number = 3
+
+[node name="computer4" parent="computers" unique_id=1659957537 instance=ExtResource("5_q7w76")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9404492, 0.8514782, 0.41183123)
+computer_number = 4
+
+[node name="computer5" parent="computers" unique_id=2009297363 instance=ExtResource("5_q7w76")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0595508, 0.8514782, 0.41183105)
+computer_number = 5
+
+[node name="computer6" parent="computers" unique_id=2009178625 instance=ExtResource("5_q7w76")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.059551, 0.8514782, 0.41183087)
+computer_number = 6
+
+[node name="computer7" parent="computers" unique_id=2137671711 instance=ExtResource("4_n1yhu")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 6.06, 0.851, -0.5025492)
+computer_number = 7
+
+[node name="computer8" parent="computers" unique_id=1646101258 instance=ExtResource("4_n1yhu")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 2.06, 0.851, -0.50254905)
+computer_number = 8
+
+[node name="computer9" parent="computers" unique_id=1149718578 instance=ExtResource("4_n1yhu")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -1.94, 0.851, -0.5025489)
+computer_number = 9
+
+[node name="computer10" parent="computers" unique_id=560833661 instance=ExtResource("5_q7w76")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9404492, 0.8514782, -4.968666)
+computer_number = 10
+
+[node name="computer11" parent="computers" unique_id=1168765635 instance=ExtResource("5_q7w76")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0595505, 0.8514782, -4.968666)
+computer_number = 11
+
+[node name="computer12" parent="computers" unique_id=795716605 instance=ExtResource("5_q7w76")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.059551, 0.8514782, -4.968667)
+computer_number = 12
+
+[node name="ManagerComputer" parent="computers" unique_id=1961445155 instance=ExtResource("6_wot2p")]
+transform = Transform3D(7.54979e-08, 0, -1, 0, 1, 0, 1, 0, 7.54979e-08, -7.309221, 0.851, 4.870213)
+off_screen_material = null
+on_screen_material = null
+
+[node name="ManagerScreenOverlay" type="Control" parent="computers/ManagerComputer" unique_id=2045776928]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("7_kvwfe")
+
+[node name="ColorRect" type="ColorRect" parent="computers/ManagerComputer/ManagerScreenOverlay" unique_id=1310067376]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.06299997, 0, 0.14, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="computers/ManagerComputer/ManagerScreenOverlay" unique_id=1347547267]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -240.0
+offset_right = 320.0
+offset_bottom = 240.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2.25, 2.25)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="computers/ManagerComputer/ManagerScreenOverlay/CenterContainer" unique_id=1577208322]
+layout_mode = 2
+
+[node name="SubViewport" type="SubViewport" parent="computers/ManagerComputer/ManagerScreenOverlay/CenterContainer/SubViewportContainer" unique_id=1821167312]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(640, 480)
+render_target_update_mode = 0
+
+[node name="ManagerScreen" parent="computers/ManagerComputer/ManagerScreenOverlay/CenterContainer/SubViewportContainer/SubViewport" unique_id=1088967209 instance=ExtResource("8_l4tom")]
+position = Vector2(320, 240)
+font = ExtResource("9_y8ura")
+
+[node name="Button2" type="Button" parent="computers/ManagerComputer/ManagerScreenOverlay/CenterContainer/SubViewportContainer/SubViewport/ManagerScreen" unique_id=2034168723]
+offset_left = -315.2466
+offset_top = -235.87444
+offset_right = -268.2466
+offset_bottom = -204.87444
+theme_override_fonts/font = ExtResource("9_y8ura")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_4h4vs")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_fd0ao")
+theme_override_styles/hover = SubResource("StyleBoxFlat_g3bb0")
+text = "Power Off"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="computers/ManagerComputer/ManagerScreenOverlay" unique_id=803886349]
+libraries/ = SubResource("AnimationLibrary_4crdw")
+
+[node name="Environment" parent="." unique_id=1697760347 instance=ExtResource("10_aav61")]
+
+[node name="Coffee Machine" parent="." unique_id=411310634 instance=ExtResource("11_a64np")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.4689803, 0.8133545, -7.611947)
+
+[connection signal="pressed" from="computers/ManagerComputer/ManagerScreenOverlay/CenterContainer/SubViewportContainer/SubViewport/ManagerScreen/Button2" to="computers/ManagerComputer/ManagerScreenOverlay" method="_on_button_pressed"]

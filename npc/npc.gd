@@ -9,6 +9,9 @@ extends AnimatableBody3D
 @onready var computers = get_parent().computers.get_children()
 @onready var sprite: AnimatedSprite3D = $sprite
 
+@export var lights_on_modulate : Color
+@export var lights_off_modulate : Color
+
 var annoyed_meter := 0.0
 var impatience := 5
 @export var annoyed_limit := 100.0
@@ -43,7 +46,8 @@ func _ready() -> void:
     
 var money_timer := 0.0
 func _process(delta: float) -> void:
-    print(annoyed_meter)
+    if Global.power == false:
+        queue_free()
     var difference = global_position - previous_position
 
     if difference.x > 0:
@@ -95,7 +99,8 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
                 at_computer = true
                 event_timer.start()
     else:
-        assigned_computer.toggle_power()
+        if assigned_computer != null:
+            assigned_computer.toggle_power()
         interaction_priority = 0
         queue_free()
 
@@ -118,6 +123,7 @@ func _on_problem_timer_timeout() -> void:
                 Global.customers_with_issues += 1
 
 func problem_fixed():
+    interaction_priority = 0
     sprite.play("typing")
     annoyed_meter -= annoyed_limit * 0.1
     Global.customers_with_issues -= 1
@@ -131,7 +137,7 @@ func leave():
     warning.hide()
     movement_animator.speed_scale = 0.8
     if state == states.WAITING:
-        movement_animator.play(str(assigned_computer_num)+"leave")
+        movement_animator.play("leave")
     else:
         movement_animator.play(str(assigned_computer_num)+"leave")
     state = states.LEAVING

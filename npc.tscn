@@ -634,7 +634,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1.7666667, 2, 2.3, 4, 5),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(8.832951, 1, 10.689069), Vector3(-3.811, 1, 10.689), Vector3(-3.9858797, 1, 9.728836), Vector3(-2.60705, 1, 8.266766), Vector3(-2.60705, 1, -3.5473814), Vector3(-3.5884495, 1, -6.1971617)]
+"values": [Vector3(14.218, 1, 10.689), Vector3(-3.811, 1, 10.689), Vector3(-3.9858797, 1, 9.728836), Vector3(-2.60705, 1, 8.266766), Vector3(-2.60705, 1, -3.5473814), Vector3(-3.5884495, 1, -6.1971617)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ycdy4"]
@@ -753,6 +753,8 @@ size = Vector3(3, 3.559, 3)
 [node name="NPC" type="AnimatableBody3D" unique_id=756004745]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.832951, 1, 10.689069)
 script = ExtResource("1_ul7y6")
+lights_on_modulate = Color(1, 1, 1, 1)
+lights_off_modulate = Color(0.13859999, 0.13859999, 0.21, 1)
 
 [node name="sprite" type="AnimatedSprite3D" parent="." unique_id=866452404]
 transform = Transform3D(3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, 0, 0, 0)
@@ -762,7 +764,7 @@ alpha_cut = 2
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_kek77")
 animation = &"typing"
-frame_progress = 0.98339456
+frame_progress = 0.06376358
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1320725289]
 shape = SubResource("CapsuleShape3D_4c57u")

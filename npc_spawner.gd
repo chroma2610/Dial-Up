@@ -14,6 +14,8 @@ func _ready() -> void:
     spawn()
 
 func _process(delta: float) -> void:
+    if Global.power == false:
+        return
     if Global.checking_in == true or len(get_children()) > 11:
         spawn_timer = 0
         pass
@@ -30,7 +32,6 @@ func _process(delta: float) -> void:
 func spawn():
     var inst := scene.instantiate()
     self.add_child(inst)
-    inst.global_position = global_position
 
 
 var running = false

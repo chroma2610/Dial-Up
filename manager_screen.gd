@@ -2,6 +2,10 @@ extends Node2D
 
 # Drag your GridContainer here in the Inspector
 @export var grid: GridContainer
+@onready var manager_terminal: TextureRect = $Sprite2D
+@onready var inbox: TextureRect = $Inbox
+@onready var pay_bills: Button = $Sprite2D/Button
+@onready var label: Label = $Sprite2D/Button/Label
 
 # Style knobs (Inspector)
 @export var h_separation: int = 24
@@ -82,3 +86,30 @@ func _process(delta: float) -> void:
         "Total Customers": str(Global.total_customers) + "/12",
         "Annoyed Customers": str(Global.customers_with_issues) + "/" + str(Global.total_customers),
         })
+    if Global.bank_balance > Global.total_bills:
+        pay_bills.disabled = false
+        label.hide()
+    else: 
+        pay_bills.disabled = true
+        label.show()
+        label.text = "-$" + str(abs(Global.bank_balance - Global.total_bills)) + " short!"
+
+
+func _on_managerclose_pressed() -> void:
+    manager_terminal.hide()
+
+
+func _on_inboxclose_pressed() -> void:
+    inbox.hide()
+
+
+func _on_manager_terminal_pressed() -> void:
+    manager_terminal.show()
+
+
+func _on_inbox_pressed() -> void:
+    inbox.show()
+
+
+func _on_button_pressed() -> void:
+    Global.pay_bills()

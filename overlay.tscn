@@ -1,0 +1,402 @@
+[gd_scene format=3 uid="uid://bdbos646e3fcl"]
+
+[ext_resource type="Script" uid="uid://cjcmnllvmvgma" path="res://overlay.gd" id="1_2kreh"]
+[ext_resource type="Texture2D" uid="uid://1pu086yie2bv" path="res://tilemaps/game over.png" id="2_pct6n"]
+[ext_resource type="FontFile" uid="uid://v130t0q7i60u" path="res://04B_03_.TTF" id="3_u82w7"]
+[ext_resource type="FontFile" uid="uid://chmb58jg7hbhv" path="res://04B_11_.TTF" id="4_mndut"]
+[ext_resource type="AudioStream" uid="uid://b0vthikuvof2h" path="res://floraphonic-handle-paper-foley-1-172688.mp3" id="5_pct6n"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jhem3"]
+bg_color = Color(0, 0, 0, 1)
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ym73e"]
+bg_color = Color(0.43, 0.43, 0.43, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4grua"]
+bg_color = Color(0.2, 0.2, 0.2, 1)
+
+[sub_resource type="Animation" id="Animation_u82w7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fade:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Fade:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TextureRect:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(604, 79.29413)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TextureRect:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TextureRect:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Label:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Label:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_pct6n"]
+resource_name = "next_day"
+
+[sub_resource type="Animation" id="Animation_jhem3"]
+resource_name = "nextday"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fade:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Fade:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(0, 0, 0, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Label:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.3333334, 1.9333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Label:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.0333333, 1.3666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_mndut"]
+resource_name = "slide"
+length = 2.8985
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fade:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Fade:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(0, 0, 0, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TextureRect:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.51, 2.85),
+"transitions": PackedFloat32Array(0.2871746, 1),
+"update": 0,
+"values": [Vector2(604, 1198), Vector2(604, 109)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TextureRect:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.5666667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TextureRect:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1.54, 2.8333333),
+"transitions": PackedFloat32Array(0.287, 1),
+"update": 0,
+"values": [0.5201081170943104, -0.06457718232378999]
+}
+tracks/5/type = "audio"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AudioStreamPlayer2D")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("5_pct6n")
+}],
+"times": PackedFloat32Array(1.3333334)
+}
+tracks/5/use_blend = true
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jhem3"]
+_data = {
+&"RESET": SubResource("Animation_u82w7"),
+&"next_day": SubResource("Animation_pct6n"),
+&"nextday": SubResource("Animation_jhem3"),
+&"slide": SubResource("Animation_mndut")
+}
+
+[node name="Overlay" type="CanvasLayer" unique_id=356372300]
+script = ExtResource("1_2kreh")
+
+[node name="Fade" type="ColorRect" parent="." unique_id=2047962718]
+visible = false
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1685470624]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -356.0
+offset_top = -460.70587
+offset_right = 356.0
+offset_bottom = 460.70966
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+size_flags_horizontal = 4
+texture = ExtResource("2_pct6n")
+stretch_mode = 5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TextureRect" unique_id=2099196402]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -338.0
+offset_top = 129.70587
+offset_right = 343.0
+offset_bottom = 736.7059
+grow_horizontal = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("3_u82w7")
+theme_override_font_sizes/normal_font_size = 32
+text = "Dear Cafe Manager (Robert),
+
+Our records indicate that your debt of
+
+
+
+
+was not payed off before the end of your shift.
+
+As a result, your electrical services have been suspended. Please pay that off sometime if you want to keep running your business.
+How are you gonna get money running an internet cafe without electricity? idk and idc."
+
+[node name="debt" type="Label" parent="TextureRect" unique_id=332492950]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -178.5
+offset_top = 235.70587
+offset_right = 178.5
+offset_bottom = 342.70587
+grow_horizontal = 2
+pivot_offset_ratio = Vector2(0.5, 0)
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 78
+text = "$1000000"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="TextureRect" unique_id=135903777]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -178.5
+offset_top = 661.7059
+offset_right = 178.5
+offset_bottom = 768.7059
+grow_horizontal = 2
+pivot_offset_ratio = Vector2(0.5, 0)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_u82w7")
+theme_override_font_sizes/font_size = 32
+text = "total balance"
+horizontal_alignment = 1
+
+[node name="balance" type="Label" parent="TextureRect" unique_id=1913648012]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -178.5
+offset_top = 706.7059
+offset_right = 178.5
+offset_bottom = 813.7059
+grow_horizontal = 2
+pivot_offset_ratio = Vector2(0.5, 0)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_mndut")
+theme_override_font_sizes/font_size = 44
+text = "$1000000"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="TextureRect" unique_id=261696773]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -300.0
+offset_top = -107.70587
+offset_right = 300.0
+offset_bottom = -31.705872
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("4_mndut")
+theme_override_font_sizes/font_size = 53
+theme_override_styles/normal = SubResource("StyleBoxFlat_jhem3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ym73e")
+theme_override_styles/hover = SubResource("StyleBoxFlat_4grua")
+text = "RESTART SHIFT"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=909424315]
+libraries/ = SubResource("AnimationLibrary_jhem3")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1540008686]
+
+[node name="Timer" type="Timer" parent="." unique_id=164627323]
+wait_time = 3.0
+one_shot = true
+
+[node name="Label" type="Label" parent="." unique_id=746781729]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -166.0
+offset_top = -42.0
+offset_right = 166.0
+offset_bottom = 42.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_mndut")
+theme_override_font_sizes/font_size = 83
+text = "Day 3"
+
+[connection signal="pressed" from="TextureRect/Button" to="." method="_on_button_pressed"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

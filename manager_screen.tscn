@@ -5,12 +5,16 @@
 [ext_resource type="FontFile" uid="uid://v130t0q7i60u" path="res://04B_03_.TTF" id="2_8vke3"]
 [ext_resource type="Texture2D" uid="uid://bsxu2ffjngnij" path="res://manager terminal window.png" id="2_413jp"]
 [ext_resource type="Texture2D" uid="uid://c2mfh0oeka6po" path="res://inbox window.png" id="4_a24fn"]
+[ext_resource type="FontFile" uid="uid://chmb58jg7hbhv" path="res://04B_11_.TTF" id="4_i6yc8"]
 [ext_resource type="Script" uid="uid://cgyon48fo3mbn" path="res://inbox.gd" id="6_i6yc8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dsi1l"]
+bg_color = Color(0, 1, 0.14999986, 1)
 
 [node name="ManagerScreen" type="Node2D" unique_id=1088967209 node_paths=PackedStringArray("grid")]
 script = ExtResource("1_413jp")
 grid = NodePath("Sprite2D/MarginContainer/VBoxContainer/GridContainer")
-h_separation = 25
+h_separation = 20
 v_separation = 20
 font_size = 8
 
@@ -22,16 +26,32 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_n4rfs")
 
+[node name="ManagerTerminal" type="Button" parent="TextureRect" unique_id=507456994]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 112.0
+offset_top = 454.0
+offset_right = 239.0
+offset_bottom = 480.0
+
+[node name="Inbox" type="Button" parent="TextureRect" unique_id=1562538689]
+layout_mode = 0
+offset_left = 239.0
+offset_top = 454.0
+offset_right = 367.0
+offset_bottom = 480.0
+flat = true
+
 [node name="Sprite2D" type="TextureRect" parent="." unique_id=1884418468]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -10.0
-offset_top = -86.0
-offset_right = 248.0
-offset_bottom = 90.0
+offset_left = -260.0
+offset_top = -70.0
+offset_right = -2.0
+offset_bottom = 106.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_413jp")
@@ -95,19 +115,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 8
 text = "hello"
 
-[node name="Label7" type="Label" parent="Sprite2D/MarginContainer/VBoxContainer/GridContainer" unique_id=1263928964]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 8
-text = "hello"
-
-[node name="Label8" type="Label" parent="Sprite2D/MarginContainer/VBoxContainer/GridContainer" unique_id=913113294]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 8
-text = "hello"
-
-[node name="close" type="Button" parent="Sprite2D" unique_id=1839069516]
+[node name="Managerclose" type="Button" parent="Sprite2D" unique_id=1839069516]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 243.0
@@ -115,11 +123,34 @@ offset_top = 1.0
 offset_right = 256.0
 offset_bottom = 14.0
 
+[node name="Button" type="Button" parent="Sprite2D" unique_id=2104221153]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 115.0
+offset_right = 134.0
+offset_bottom = 142.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_i6yc8")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_dsi1l")
+text = "PAY BILLS"
+
+[node name="Label" type="Label" parent="Sprite2D/Button" unique_id=1061009926]
+layout_mode = 0
+offset_top = 31.0
+offset_right = 82.0
+offset_bottom = 54.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_constants/line_spacing = -2
+theme_override_fonts/font = ExtResource("2_8vke3")
+theme_override_font_sizes/font_size = 8
+text = "$999 short!"
+
 [node name="Inbox" type="TextureRect" parent="." unique_id=1781897817]
-offset_left = -287.0
-offset_top = -54.0
-offset_right = -29.0
-offset_bottom = 122.0
+offset_left = 31.0
+offset_top = -88.0
+offset_right = 289.0
+offset_bottom = 88.0
 texture = ExtResource("4_a24fn")
 
 [node name="Label" type="RichTextLabel" parent="Inbox" unique_id=1389415820]
@@ -149,10 +180,16 @@ bbcode_enabled = true
 scroll_active = false
 script = ExtResource("6_i6yc8")
 
-[node name="close" type="Button" parent="Inbox" unique_id=2122672642]
+[node name="Inboxclose" type="Button" parent="Inbox" unique_id=2122672642]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 243.0
 offset_top = 1.0
 offset_right = 256.0
 offset_bottom = 14.0
+
+[connection signal="pressed" from="TextureRect/ManagerTerminal" to="." method="_on_manager_terminal_pressed"]
+[connection signal="pressed" from="TextureRect/Inbox" to="." method="_on_inbox_pressed"]
+[connection signal="pressed" from="Sprite2D/Managerclose" to="." method="_on_managerclose_pressed"]
+[connection signal="pressed" from="Sprite2D/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Inbox/Inboxclose" to="." method="_on_inboxclose_pressed"]

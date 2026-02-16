@@ -13,4 +13,9 @@ func toggle_power():
         tv.set_surface_override_material(1, on_screen_material)
     else:
         tv.set_surface_override_material(1, off_screen_material)
+
+func _process(delta: float) -> void:
+    if Global.power == false:
+        if tv.get_surface_override_material(1) == on_screen_material:
+            tv.set_surface_override_material(1, off_screen_material)
     

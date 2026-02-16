@@ -72,6 +72,8 @@ corner_radius_bottom_left = 20
 [node name="player" type="CharacterBody3D" unique_id=1321092498]
 axis_lock_linear_y = true
 script = ExtResource("1_4flbx")
+lights_on_modulate = Color(0.67, 0.57709336, 0.49580002, 1)
+lights_off_modulate = Color(0.15190001, 0.15190001, 0.31, 1)
 
 [node name="sprite" type="AnimatedSprite3D" parent="." unique_id=2119533160]
 transform = Transform3D(3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, 0, -0.9, 0)

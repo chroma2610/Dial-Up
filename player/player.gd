@@ -6,6 +6,8 @@ extends CharacterBody3D
 @onready var progress_bar: ProgressBar = $Icons/SubViewport/ProgressBar
 @onready var icons: Sprite3D = $Icons
 
+@export var lights_on_modulate : Color
+@export var lights_off_modulate : Color
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 const GROUND_FRICTION := 0.7
@@ -15,11 +17,21 @@ var state := states.MOVING
 var currently_interacting_with
 
 func _ready() -> void:
+    Global.power = true
     state = states.MOVING
     icons.hide()
 
+func _process(delta: float) -> void:
+    if Global.power == false:
+        sprite.modulate = lights_off_modulate
+    else:
+        sprite.modulate = lights_on_modulate
 
 func _unhandled_key_input(event: InputEvent) -> void:
+    if Global.power == false:
+        return
+    if Global.day_over == true:
+        return
     if not event.is_action_pressed("interact") or state != states.MOVING:
         return
     if not interaction_cast.is_colliding():
@@ -61,6 +73,10 @@ func _unhandled_key_input(event: InputEvent) -> void:
 
 
 func _physics_process(delta: float) -> void:
+    if Global.power == false:
+        return
+    if Global.day_over == true:
+        return
     if position.z < -6:
         camera.target_view = camera.manager_view
     else:
@@ -110,4 +126,8 @@ func interact():
             progress_bar.value = 0
             currently_interacting_with.player_interaction(self)
             currently_interacting_with = null
+    elif Global.power == false:
+        icons.hide()
+        progress_bar.value = 0
+        state = states.MOVING
     

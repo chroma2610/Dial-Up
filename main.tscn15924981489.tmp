@@ -26,13 +26,13 @@ ground_curve = 0.97005934
 ground_energy_multiplier = 0.7
 sun_curve = 1.0814948
 
-[sub_resource type="Sky" id="Sky_vivmo"]
+[sub_resource type="Sky" id="Sky_0xm2m"]
 sky_material = SubResource("ProceduralSkyMaterial_1bvp3")
 
 [sub_resource type="Environment" id="Environment_h2yge"]
 background_mode = 2
 background_energy_multiplier = 0.3
-sky = SubResource("Sky_vivmo")
+sky = SubResource("Sky_0xm2m")
 tonemap_mode = 2
 glow_enabled = true
 
@@ -230,7 +230,7 @@ offset_right = 320.0
 offset_bottom = 240.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(2.25, 2.25)
+scale = Vector2(2.23, 2.23)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="computers/ManagerComputer/ManagerScreenOverlay/CenterContainer" unique_id=1918709119]
